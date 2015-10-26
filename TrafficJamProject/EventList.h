@@ -41,6 +41,12 @@ public:
      // Contrat :
      //
 
+     bool IsEmpty();
+     // Mode d'emploi :
+     //
+     // Contrat :
+     //
+
 //------------------------------------------------- Surcharge d'opérateurs
     EventList & operator = ( const EventList & unEventList );
     // Mode d'emploi :
@@ -86,11 +92,32 @@ private:
 
 //---------------------------------------------------------- Classes amies
 
+friend std::ostream& operator << (std::ostream &strm, const EventList & aEventList);
+
 //-------------------------------------------------------- Classes privées
 
 //----------------------------------------------------------- Types privés
 
 };
+
+inline std::ostream& operator << (std::ostream &strm, const EventList & aEventList)
+// Algorithme :
+//
+{
+	Event* cursor = aEventList.root;
+
+	while (cursor != NULL)
+	{
+		if (cursor != aEventList.root)
+		{
+			strm << *cursor << endl;
+		}
+
+		cursor = cursor->GetNext();
+	}
+
+	return strm;
+} //----- Fin de operator <<
 
 //----------------------------------------- Types dépendants de <EventList>
 

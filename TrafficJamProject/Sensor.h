@@ -29,7 +29,9 @@ class Sensor
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste de paramètres );
+    void AddEvent(unsigned int year, unsigned int month, unsigned int day,
+    			  unsigned int hour, unsigned int minute, unsigned int d7,
+				  unsigned int trafficState);
     // Mode d'emploi :
     //
     // Contrat :
@@ -85,15 +87,43 @@ private:
 
     long int id;
 
-    EventList events[7][24][60];
+    EventList* events[7][24][60];
 
 //---------------------------------------------------------- Classes amies
+
+friend std::ostream& operator << (std::ostream &strm, const Sensor & aSensor);
 
 //-------------------------------------------------------- Classes privées
 
 //----------------------------------------------------------- Types privés
 
 };
+
+inline std::ostream& operator << (std::ostream &strm, const Sensor & aSensor)
+// Algorithme :
+//
+{
+	int i, j, k;
+
+	strm << "Sensor " << aSensor.id << " : " << endl;
+
+	for (i = 0; i < 7; i++)
+	{
+		for (j = 0; j < 24; j++)
+		{
+			for (k = 0; k < 60; k++)
+			{
+				if (!aSensor.events[i][j][k]->IsEmpty())
+				{
+					strm << i+1 << ", " << j << ", " << k << " : " << endl
+						 << aSensor.events[i][j][k] << endl;
+				}
+			}
+		}
+	}
+
+	return strm;
+} //----- Fin de operator <<
 
 //----------------------------------------- Types dépendants de <Sensor>
 

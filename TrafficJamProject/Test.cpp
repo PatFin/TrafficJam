@@ -1,13 +1,15 @@
 using namespace std;
 
 #include <iostream>
-#include "EventList.h"
+#include "Sensor.h"
 
 int main()
 {
-	EventList liste = new EventList();
+	Sensor* sens = new Sensor(3);
 
-	liste.DisplayList();
+	sens->AddEvent(2015, 10, 26, 21, 33, 1, 'V');
+
+	cout << *sens;
 
 	return 0;
 }

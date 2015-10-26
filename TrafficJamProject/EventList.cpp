@@ -52,10 +52,28 @@ void EventList::DisplayList()
 
 	while (cursor != NULL)
 	{
-		cout << cursor << endl;
+		if (cursor != root)
+		{
+			cout << *cursor << endl;
+		}
 
 		cursor = cursor->GetNext();
 	}
+} //----- Fin de Méthode
+
+bool EventList::IsEmpty()
+// Algorithme :
+//
+{
+	if (root->GetNext() == NULL)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
 } //----- Fin de Méthode
 
 

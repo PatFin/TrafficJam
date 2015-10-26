@@ -71,6 +71,23 @@ Event::Event ()
     next = NULL;
 } //----- Fin de Event
 
+Event::Event (unsigned int aYear, unsigned int aMonth, unsigned int aDay,
+			  char aState)
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Event>" << endl;
+#endif
+
+    year = aYear;
+    month = aMonth;
+    day = aDay;
+    trafficState = aState;
+
+    next = NULL;
+} //----- Fin de Event
+
 
 Event::~Event ( )
 // Algorithme :

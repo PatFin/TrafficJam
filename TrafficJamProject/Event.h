@@ -32,8 +32,12 @@ public:
     //
     // Contrat :
     //
-    void SetNext(Event * event);
 
+    void SetNext(Event * event);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 //------------------------------------------------- Surcharge d'opérateurs
 
 
@@ -45,6 +49,13 @@ public:
     //
 
     Event ();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
+    Event (unsigned int aYear, unsigned int aMonth, unsigned int aDay,
+    			  char aState);
     // Mode d'emploi :
     //
     // Contrat :
@@ -88,11 +99,12 @@ friend std::ostream& operator << ( std::ostream &strm, const Event & unEvent );
 
 };
 
-std::ostream& operator << ( std::ostream &strm, const Event & aEvent )
+inline std::ostream& operator << ( std::ostream &strm, const Event & aEvent )
 // Algorithme :
 //
 {
-	return strm << aEvent.day << "/" << aEvent.month << "/" << aEvent.year;
+	return strm << aEvent.day << "/" << aEvent.month << "/" << aEvent.year
+				<< " : " << aEvent.trafficState;
 } //----- Fin de operator <<
 
 //----------------------------------------- Types dépendants de <Event>

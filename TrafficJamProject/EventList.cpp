@@ -54,7 +54,7 @@ void EventList::DisplayList()
 	{
 		cout << cursor << endl;
 
-		cursor = &(cursor->GetNext());
+		cursor = cursor->GetNext();
 	}
 } //----- Fin de Méthode
 

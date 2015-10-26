@@ -32,7 +32,7 @@ public:
     //
     // Contrat :
     //
-
+    void SetNext(Event * event);
 
 //------------------------------------------------- Surcharge d'opérateurs
 

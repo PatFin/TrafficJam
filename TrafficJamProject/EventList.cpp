@@ -33,13 +33,13 @@ void EventList::AddEvent(Event* aEvent)
 {
 	if (root->GetNext() != NULL)
 	{
-		aEvent->GetNext() = &(root->GetNext());
-		root->GetNext() = &aEvent;
+		aEvent->SetNext(root->GetNext());
+		root->SetNext(aEvent);
 	}
 	else
 	{
-		root->GetNext() = &aEvent;
-		aEvent->GetNext() = NULL;
+		root->SetNext(aEvent);
+		aEvent->SetNext(NULL);
 	}
 
 } //----- Fin de Méthode

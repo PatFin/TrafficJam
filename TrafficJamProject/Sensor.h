@@ -43,6 +43,13 @@ public:
     // Contrat :
     //
 
+    float* GetAverageTrafficMinutes(unsigned int d7, unsigned int h,
+    		unsigned int m);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
 
 //------------------------------------------------- Surcharge d'opérateurs
     Sensor & operator = ( const Sensor & unSensor );

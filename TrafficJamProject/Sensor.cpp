@@ -43,6 +43,16 @@ void Sensor::AddEvent(unsigned int year, unsigned int month, unsigned int day,
 		events[d7-1][hour][minute]->AddEvent(new Event(year, month, day, state));
 	} //----- Fin de Méthode
 
+float* Sensor::GetAverageTrafficMinutes(unsigned int d7, unsigned int h,
+    		unsigned int m)
+// Algorithme :
+//
+	{
+		float stats[4];
+
+		return stats;
+	} //----- Fin de Méthode
+
 
 //------------------------------------------------- Surcharge d'opérateurs
 //Sensor & Sensor::operator = ( const Sensor & unSensor )

@@ -34,6 +34,13 @@ Event* Event::GetNext()
 	return next;
 } //----- Fin de Méthode
 
+char Event::GetState()
+// Algorithme :
+//
+{
+	return trafficState;
+} //----- Fin de Méthode
+
 void Event::SetNext(Event * aEvent)
 // Algorithme :
 //

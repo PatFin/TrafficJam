@@ -76,6 +76,42 @@ bool EventList::IsEmpty()
 
 } //----- Fin de Méthode
 
+unsigned long int* EventList::TrafficNumbers()
+// Algorithme :
+//
+{
+	int numbers[4] = {0,0,0,0};
+
+	Event* cursor = root;
+
+	while (cursor != NULL)
+	{
+		if (cursor != root)
+		{
+			switch(cursor->GetState())
+			{
+			case 'V' :
+				numbers[0]++;
+				break;
+
+			case 'J' :
+				numbers[1]++;
+				break;
+
+			case 'R' :
+				numbers[2]++;
+				break;
+
+			case 'N' :
+				numbers[3]++;
+				break;
+			}
+		}
+	}
+
+	return numbers;
+} //----- Fin de Méthode
+
 
 //------------------------------------------------- Surcharge d'opérateurs
 //EventList & EventList::operator = ( const EventList & unEventList )

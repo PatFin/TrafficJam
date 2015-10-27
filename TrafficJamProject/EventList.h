@@ -47,6 +47,12 @@ public:
      // Contrat :
      //
 
+     unsigned long int* TrafficNumbers();
+          // Mode d'emploi :
+          //
+          // Contrat :
+          //
+
 //------------------------------------------------- Surcharge d'opérateurs
     EventList & operator = ( const EventList & unEventList );
     // Mode d'emploi :

@@ -33,6 +33,12 @@ public:
     // Contrat :
     //
 
+    char GetState();
+        // Mode d'emploi :
+        //
+        // Contrat :
+        //
+
     void SetNext(Event * event);
     // Mode d'emploi :
     //

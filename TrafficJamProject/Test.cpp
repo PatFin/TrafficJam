@@ -11,7 +11,9 @@ int main()
 	sens->AddEvent(2015, 10, 27, 21, 33, 1, 'V');
 	sens->AddEvent(2015, 10, 26, 21, 33, 2, 'V');
 
-	cout << *sens;
+	cout << sens->GetEvents(1, 21, 33)->GetNbEvents() << endl;
+
+	//cout << *sens << endl;
 
 	return 0;
 }

@@ -48,10 +48,16 @@ public:
      //
 
      unsigned long int* TrafficNumbers();
-          // Mode d'emploi :
-          //
-          // Contrat :
-          //
+     // Mode d'emploi :
+     //
+     // Contrat :
+     //
+
+     unsigned long int GetNbEvents();
+     // Mode d'emploi :
+     //
+     // Contrat :
+     //
 
 //------------------------------------------------- Surcharge d'opérateurs
     EventList & operator = ( const EventList & unEventList );

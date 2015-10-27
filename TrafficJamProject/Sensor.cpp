@@ -34,6 +34,13 @@ long int Sensor::GetId()
 		return id;
 	} //----- Fin de Méthode
 
+EventList* Sensor::GetEvents(unsigned int d, unsigned int h, unsigned int m)
+// Algorithme :
+//
+	{
+		return events[d][h][m];
+	} //----- Fin de Méthode
+
 void Sensor::AddEvent(unsigned int year, unsigned int month, unsigned int day,
     			  unsigned int hour, unsigned int minute, unsigned int d7,
 				  unsigned int state)
@@ -43,12 +50,33 @@ void Sensor::AddEvent(unsigned int year, unsigned int month, unsigned int day,
 		events[d7-1][hour][minute]->AddEvent(new Event(year, month, day, state));
 	} //----- Fin de Méthode
 
-float* Sensor::GetAverageTrafficMinutes(unsigned int d7, unsigned int h,
+float* Sensor::GetAverageTrafficMinute(unsigned int d, unsigned int h,
     		unsigned int m)
 // Algorithme :
 //
 	{
 		float stats[4];
+
+		unsigned long int* trafficNumbers = events[d-1][h][m]->TrafficNumbers();
+		unsigned long int nbOfEvents = events[d-1][h][m]->GetNbEvents();
+
+		int i;
+
+		if (nbOfEvents != 0)
+		{
+			for (i = 0; i < 4; i++)
+			{
+				stats[i] = (float)trafficNumbers[i] / nbOfEvents;
+			}
+		}
+		else
+		{
+			for (i = 0; i < 4; i++)
+			{
+				stats[i] = 0;
+			}
+		}
+
 
 		return stats;
 	} //----- Fin de Méthode

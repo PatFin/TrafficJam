@@ -35,6 +35,12 @@ public:
 	// Contrat :
 	//
 
+	EventList* GetEvents(unsigned int d, unsigned int h, unsigned int m);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
     void AddEvent(unsigned int year, unsigned int month, unsigned int day,
     			  unsigned int hour, unsigned int minute, unsigned int d7,
 				  unsigned int trafficState);
@@ -43,7 +49,7 @@ public:
     // Contrat :
     //
 
-    float* GetAverageTrafficMinutes(unsigned int d7, unsigned int h,
+    float* GetAverageTrafficMinute(unsigned int d7, unsigned int h,
     		unsigned int m);
     // Mode d'emploi :
     //
@@ -128,8 +134,8 @@ inline std::ostream& operator << (std::ostream &strm, const Sensor & aSensor)
 			{
 				if (!aSensor.events[i][j][k]->IsEmpty())
 				{
-					strm << i+1 << ", " << j << ", " << k << " : " << endl
-						 << *(aSensor.events[i][j][k]) << endl;
+					strm << "day " << i+1 << ", " << j << "h" << k << " : "
+						 << endl << *(aSensor.events[i][j][k]) << endl;
 				}
 			}
 		}

@@ -107,9 +107,33 @@ unsigned long int* EventList::TrafficNumbers()
 				break;
 			}
 		}
+
+		cursor = cursor->GetNext();
 	}
 
 	return numbers;
+} //----- Fin de Méthode
+
+unsigned long int EventList::GetNbEvents()
+// Algorithme :
+//
+{
+	Event* cursor = root;
+
+	unsigned long int nb = 0;
+
+	while (cursor != NULL)
+	{
+		if (cursor != root)
+		{
+			cout << *cursor << endl;
+			nb++;
+		}
+
+		cursor = cursor->GetNext();
+	}
+
+	return nb;
 } //----- Fin de Méthode
 
 

@@ -29,6 +29,12 @@ class Sensor
 
 public:
 //----------------------------------------------------- Méthodes publiques
+	long int GetId();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
     void AddEvent(unsigned int year, unsigned int month, unsigned int day,
     			  unsigned int hour, unsigned int minute, unsigned int d7,
 				  unsigned int trafficState);

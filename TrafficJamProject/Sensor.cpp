@@ -27,6 +27,13 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
+long int Sensor::GetId()
+// Algorithme :
+//
+	{
+		return id;
+	} //----- Fin de Méthode
+
 void Sensor::AddEvent(unsigned int year, unsigned int month, unsigned int day,
     			  unsigned int hour, unsigned int minute, unsigned int d7,
 				  unsigned int state)

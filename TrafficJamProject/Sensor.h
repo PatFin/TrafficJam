@@ -105,7 +105,7 @@ inline std::ostream& operator << (std::ostream &strm, const Sensor & aSensor)
 {
 	int i, j, k;
 
-	strm << "Sensor " << aSensor.id << " : " << endl;
+	strm << "Sensor " << aSensor.id << " : " << endl << endl;
 
 	for (i = 0; i < 7; i++)
 	{
@@ -116,7 +116,7 @@ inline std::ostream& operator << (std::ostream &strm, const Sensor & aSensor)
 				if (!aSensor.events[i][j][k]->IsEmpty())
 				{
 					strm << i+1 << ", " << j << ", " << k << " : " << endl
-						 << aSensor.events[i][j][k] << endl;
+						 << *(aSensor.events[i][j][k]) << endl;
 				}
 			}
 		}

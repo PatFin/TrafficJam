@@ -80,7 +80,7 @@ unsigned long int* EventList::TrafficNumbers()
 // Algorithme :
 //
 {
-	int numbers[4] = {0,0,0,0};
+	unsigned long int numbers[4] = {0,0,0,0};
 
 	Event* cursor = root;
 

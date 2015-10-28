@@ -1,0 +1,50 @@
+\\Remarque de Patrick: dans la classe EventList, est-ce qu'il ne serait pas mieux de détecter la fin de la liste grâce à next qui pointe vers this? Plutôt que d'avoir un null? 
+
+CLASSE SENSOR
+
+	Interface à écrire:
+		<méthodes ... à remplir -->
+	Réalisation:
+		<les méthodes de l'interface qui ont été implémentées + statut>
+		Constructeur
+		Destructeur
+		getId
+	Tests:
+		<test de quoi?, statut>
+		
+CLASSE CITY
+
+	Interface à écrire:
+		<méthodes ... à remplir -->
+	Réalisation:
+		<les méthodes de l'interface qui ont été implémentées + statut>
+	Tests:
+		<test de quoi?, statut>
+
+CLASSE EVENT
+
+	Interface à écrire:
+		<méthodes ... à remplir -->
+	Réalisation:
+		<les méthodes de l'interface qui ont été implémentées + statut>
+	Tests:
+		<test de quoi?, statut>
+
+CLASSE LIST
+
+	Interface à écrire:
+		<méthodes ... à remplir -->
+	Réalisation:
+		<les méthodes de l'interface qui ont été implémentées + statut>
+	Tests:
+		<test de quoi?, statut>
+
+CLASSE TREE
+
+	Interface à écrire:
+		<méthodes ... à remplir -->
+	Réalisation:
+		<les méthodes de l'interface qui ont été implémentées + statut>
+	Tests:
+		<test de quoi?, statut>
+		

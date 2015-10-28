@@ -1,0 +1,71 @@
+GENERAL THINKING
+
+	Classes: 	City
+				Sensor
+				Event
+				
+	structures associated:
+			Chained list of Event				  -> class List
+			Evenly balanced binary tree of Sensor -> class Tree
+			
+DESCRIPTION
+
+	City:
+	
+		Attributes
+			Tree <Sensor>
+			Name ? 
+		
+		Methods
+			public:
+				ADD
+				JAM_DH
+				STATS_D7
+				OPT
+			
+			private:
+				we shall see :P
+				
+	Sensor
+	
+		Attributes
+			long int id
+			List <Event> [7][24][60] events (7 days of the week, 24 hours, 60 minutes)
+		
+		Methods
+			public:
+				Insert (Event) (Ajout d'évènements suivant le feed dans ADD de City)
+				GetAverageTrafficMinute (7,24,60) Returns the enum associated with Traffic for a day an hour a minute
+				GetAverageTrafficHour (7,24) Returns the enum associated with Traffic for a day an hour
+				GetAverageTrafficDay (7) Returns the enum associated with Traffic for a day
+				//Renvoyer des tableau de float! cf Q4!
+				
+				GetId() //Renvoie une copie de l'identifiant
+			private:
+				?
+				
+	Event
+	
+		Attributes
+			year
+			month
+			day
+			trafficState (enum)	
+			
+		Methods
+			getTraffic (returns ///copy\\\ of trafficState)
+	
+	
+  STRUCTURES DES DONNÉES
+  
+	List of Event
+		Chaine simplement chainée. 
+		Insertion en tête
+		Non générique
+		Avec Sentinelle
+		
+	Tree of Sensor
+		Arbre binaire
+		Balanced (équilibré et non 'parfait')
+		Tri selon le numéro (id) du sensor
+		

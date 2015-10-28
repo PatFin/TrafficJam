@@ -4,17 +4,19 @@
 
 
 //--------------------------------------------------------- Interfaces utilisées
-
+#include "TreeSensor.h"
 //------------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------------
 // Rôle de la classe TreeSensor
-// TODO
+// TreeSensor allow the gathering of multiple instances of the Sensor class to
+// be stored in a tree. The tree will be balanced yet not perfect. The Sensors
+// will be ordered according to their id number.
 //------------------------------------------------------------------------------
 
-class TreeSensor :
+class TreeSensor
 {
 	//--------------------------------------------------------------------PUBLIC
 	public : 
@@ -26,6 +28,10 @@ class TreeSensor :
 	protected :
 	//--------------------------------------------------------Méthodes protégées
 	//--------------------------------------------------------Attributs protégés
+	TreeSensor * left;
+	TreeSensor * right;
+	TreeSensor * top;
+	Sensor * sensor;
 };
 
 //-----------------------------------------Autres définitions dépendantes de TreeSensor

@@ -69,3 +69,13 @@ DESCRIPTION
 		Balanced (équilibré et non 'parfait')
 		Tri selon le numéro (id) du sensor
 		
+Quoi faire pour chaque méthode?
+	LECTURE d'une valeur:
+	1. Parcourir l'arbre binaire pour trouver le capteur
+		-> Si trouvé, y ajouter la valeur de capteur correspondante.
+		-> Sinon, créé le Sensor avec un premier Event. Le placer dans l'arbre (et trier à nouveau selon SensorID)
+	
+	Statistiques pour un capteur
+	1. Parcourir l'arbre pour y trouver le capteur.
+	2. Parcourir ses valeurs pour connaitre ses stats.
+	3. Mise en forme et affichage.		

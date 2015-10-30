@@ -55,7 +55,7 @@ float* Sensor::GetAverageTrafficMinute(unsigned int d, unsigned int h,
 // Algorithme :
 //
 	{
-		float stats[4];
+		float * stats[4];
 
 		unsigned long int* trafficNumbers = events[d-1][h][m]->TrafficNumbers();
 		unsigned long int nbOfEvents = events[d-1][h][m]->GetNbEvents();
@@ -66,19 +66,19 @@ float* Sensor::GetAverageTrafficMinute(unsigned int d, unsigned int h,
 		{
 			for (i = 0; i < 4; i++)
 			{
-				stats[i] = (float)trafficNumbers[i] / nbOfEvents;
+				*stats[i] = (float)trafficNumbers[i] / nbOfEvents;
 			}
 		}
 		else
 		{
 			for (i = 0; i < 4; i++)
 			{
-				stats[i] = 0;
+				*stats[i] = 0;
 			}
 		}
 
 
-		return stats;
+		return *stats;
 	} //----- Fin de Méthode
 
 

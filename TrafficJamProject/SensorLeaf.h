@@ -25,33 +25,46 @@ class SensorLeaf
 	public : 
 	//--------------------------------------------------------Méthodes publiques
 	void InsertSensorValue (long int idSensor,unsigned int year,unsigned int month,unsigned int day,unsigned int hour, unsigned int minute, unsigned int dayWeek, unsigned int traffic);
-	// Mode d'emploi :
+	// Usage:
 	// 	Allows to put a new Event in the tree.
-	// Contrat :
+	// Contract:
 	//	No contract.
 	int GetSensor (int idSensor, Sensor ** sensor);
-	// Mode d'emploi
+	// Usage
 	//	Allows to get a Sensor specified by its id. The pointer sensor given as
 	//	parameter will point towards the Sensor.
 	//	The method will return 0 if the Sensor whose id is idSensor was found,
 	//	1 otherwise. Beware of segmentation faults in this case.
-	// Contrat :
+	// Contract :
 	//	sensor shouldn't have been initialized. If not the case, using this method
 	//	will result in memory leaks.
 	//----------------------------------------------------Surcharge d'opérateurs
 	//-----------------------------------------------Constructeurs - Destructeur
+
+	SensorLeaf (Sensor * const aSensor, SensorLeaf * aLeft, SensorLeaf * aParent);
+	// Usage:
+	//	Allows to create a new SensorLeaf with an initial sensor. The sensor isn't
+	//	modified in this method.
+	// Contract:
+	//	No contract.
 	
 	//---------------------------------------------------------------------PRIVE
 	protected :
 	//--------------------------------------------------------Méthodes protégées
 	void insertSensor (long int idSensor);
-	// Mode d'emploi :
+	// Usage :
 	//	Allows to create a new instance of Sensor and place it into the tree.
 	//	The tree is then modified to make it a HEAP back.
-	// Contrat :
+	// Contract :
 	//	The tree shouldn't contain any Sensor whose Id is isSensor. Finding a
 	//	specific Sensor will then fail (only part of the sensor's events would
 	//	be retrieved).
+
+	bool hasLeftChild ();
+	// Usage:
+	//	Allows to know if a Leaf has a left child or not.
+	// Contract;
+	//	No contract.
 	//--------------------------------------------------------Attributs protégés
 	SensorLeaf * left;
 	SensorLeaf * right;
@@ -59,6 +72,8 @@ class SensorLeaf
 	SensorLeaf * childLeft;
 	SensorLeaf * childRight;
 	Sensor * sensor;
+	SensorLeaf ** nextParent;
+	SensorLeaf ** lastElement;
 };
 
 //-----------------------------------------Autres définitions dépendantes de SensorLeaf

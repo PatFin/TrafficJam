@@ -36,16 +36,53 @@ int SensorLeaf::GetSensor(int idSensor, Sensor ** sensor)
 }
 //--------------------------------------------------------Surcharge d'opérateurs
 //---------------------------------------------------Constructeurs - Destructeur
+SensorLeaf::SensorLeaf (Sensor * const aSensor, SensorLeaf * aLeft, SensorLeaf * aParent)
+{
+	sensor = aSensor;
+	right = this;
+	childLeft = this;
+	childRight = this;
+
+	left = aLeft;
+	aLeft->right = this;
+
+	//The last element of the tree is now this. Using the double pointer, all
+	//the elements of the tree are modified.
+	this->lastElement = parent->lastElement;
+	*lastElement = this;
+
+	parent = aParent;
+	if(parent->hasLeftChild())
+	{
+		parent->childRight = this;
+		*nextParent = parent->right;
+	}
+	else
+	{
+		parent->childLeft = this;
+	}
+	nextParent = parent->nextParent;
+}
 
 //---------------------------------------------------------------------PROTECTED
 void SensorLeaf::insertSensor(long int idSensor)
 // Algorithm:
 //	A new Sensor is created as well as a new SensorLeaf. The lot is placed at the
 //	end of the tree.
-//	Then, as long as the parents Sensor's id is smaller than the child, the sensors
-//	are flipped. This ensures that the tree remains in a HEAP situation.
+//	Then tree is sorted and the different Sensors are reassigned to a leaf.
 {
+	Sensor * sensor = new Sensor(idSensor);
+	SensorLeaf * leaf = new SensorLeaf(sensor, *lastElement, *nextParent);
 
+
+}
+
+bool SensorLeaf::hasLeftChild()
+// Algorithm:
+//	By default, upon creation, the children of the leaf point towards itself.
+//	That's how the existence of a child is detected.
+{
+	return childLeft == this;
 }
 //-------------------------------------------------------------------------PRIVE
 

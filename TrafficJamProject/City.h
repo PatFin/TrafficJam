@@ -4,7 +4,7 @@
 
 
 //--------------------------------------------------------- Interfaces utilisées
-#include "TreeSensor.h"
+#include "SensorRoot.h"
 //------------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------------ Types
@@ -65,7 +65,7 @@ class City
 	protected :
 	//--------------------------------------------------------Méthodes protégées
 	//--------------------------------------------------------Attributs protégés
-	TreeSensor * sensorTree;
+	SensorRoot * sensorTree;
 };
 
 //-----------------------------------------Autres définitions dépendantes de City

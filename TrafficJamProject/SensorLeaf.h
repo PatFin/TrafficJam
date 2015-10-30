@@ -1,24 +1,24 @@
-//--------------------- Inteface de la classe TreeSensor (TreeSensor.h) ----------------------
-#if ! defined (TreeSensor_H)
-#define TreeSensor_H
+//--------------------- Inteface de la classe SensorLeaf (SensorLeaf.h) ----------------------
+#if ! defined (SensorLeaf_H)
+#define SensorLeaf_H
 
 
 //--------------------------------------------------------- Interfaces utilisées
-#include "TreeSensor.h"
+#include "SensorLeaf.h"
 //------------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------------
-// Rôle de la classe TreeSensor
-// TreeSensor allows the gathering of multiple instances of the Sensor class to
+// Rôle de la classe SensorLeaf
+// SensorLeaf allows the gathering of multiple instances of the Sensor class to
 // be stored in a tree. The tree will be balanced yet not perfect. The Sensors
 // will be ordered according to their id number.
 // The tree will follow the HEAP (highest element as parent) taking the Sensor ID
 // as a reference.
 //------------------------------------------------------------------------------
 
-class TreeSensor
+class SensorLeaf
 {
 	//--------------------------------------------------------------------PUBLIC
 	public : 
@@ -52,14 +52,14 @@ class TreeSensor
 	//	specific Sensor will then fail (only part of the sensor's events would
 	//	be retrieved).
 	//--------------------------------------------------------Attributs protégés
-	TreeSensor * left;
-	TreeSensor * right;
-	TreeSensor * parent;
-	TreeSensor * childLeft;
-	TreeSensor * childRight;
+	SensorLeaf * left;
+	SensorLeaf * right;
+	SensorLeaf * parent;
+	SensorLeaf * childLeft;
+	SensorLeaf * childRight;
 	Sensor * sensor;
 };
 
-//-----------------------------------------Autres définitions dépendantes de TreeSensor
+//-----------------------------------------Autres définitions dépendantes de SensorLeaf
 
-#endif // ! defined (TreeSensor_H)
+#endif // ! defined (SensorLeaf_H)

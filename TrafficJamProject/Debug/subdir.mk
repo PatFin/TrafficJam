@@ -4,21 +4,30 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../City.cpp \
 ../Event.cpp \
 ../EventList.cpp \
 ../Sensor.cpp \
+../SensorLeaf.cpp \
+../SensorRoot.cpp \
 ../Test.cpp 
 
 OBJS += \
+./City.o \
 ./Event.o \
 ./EventList.o \
 ./Sensor.o \
+./SensorLeaf.o \
+./SensorRoot.o \
 ./Test.o 
 
 CPP_DEPS += \
+./City.d \
 ./Event.d \
 ./EventList.d \
 ./Sensor.d \
+./SensorLeaf.d \
+./SensorRoot.d \
 ./Test.d 
 
 
@@ -26,7 +35,7 @@ CPP_DEPS += \
 %.o: ../%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
-	g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
+	g++ -I/usr/include -I/usr/include/c++/4.9.2 -I/usr/include/c++/4.9 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

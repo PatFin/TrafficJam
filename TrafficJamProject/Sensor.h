@@ -29,13 +29,13 @@ class Sensor
 
 public:
 //----------------------------------------------------- Méthodes publiques
-	long int GetId();
+	long int GetId() const;
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	EventList* GetEvents(unsigned int d, unsigned int h, unsigned int m);
+	EventList* GetEvents(unsigned int d, unsigned int h, unsigned int m) const;
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -50,7 +50,7 @@ public:
     //
 
     float* GetAverageTrafficMinute(unsigned int d7, unsigned int h,
-    		unsigned int m);
+    		unsigned int m) const;
     // Mode d'emploi :
     //
     // Contrat :

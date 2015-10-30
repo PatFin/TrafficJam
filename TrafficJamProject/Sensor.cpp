@@ -27,14 +27,14 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-long int Sensor::GetId()
+long int Sensor::GetId() const
 // Algorithme :
 //
 	{
 		return id;
 	} //----- Fin de Méthode
 
-EventList* Sensor::GetEvents(unsigned int d, unsigned int h, unsigned int m)
+EventList* Sensor::GetEvents(unsigned int d, unsigned int h, unsigned int m) const
 // Algorithme :
 //
 	{
@@ -51,7 +51,7 @@ void Sensor::AddEvent(unsigned int year, unsigned int month, unsigned int day,
 	} //----- Fin de Méthode
 
 float* Sensor::GetAverageTrafficMinute(unsigned int d, unsigned int h,
-    		unsigned int m)
+    		unsigned int m) const
 // Algorithme :
 //
 	{

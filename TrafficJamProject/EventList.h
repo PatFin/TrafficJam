@@ -35,25 +35,31 @@ public:
     // Contrat :
     //
 
-     void DisplayList();
+     void DisplayList() const;
      // Mode d'emploi :
      //
      // Contrat :
      //
 
-     bool IsEmpty();
+     bool IsEmpty() const;
      // Mode d'emploi :
      //
      // Contrat :
      //
 
-     unsigned long int* TrafficNumbers();
+     Event* GetRoot() const;
      // Mode d'emploi :
      //
      // Contrat :
      //
 
-     unsigned long int GetNbEvents();
+     unsigned long int* TrafficNumbers() const;
+     // Mode d'emploi :
+     //
+     // Contrat :
+     //
+
+     unsigned long int GetNbEvents() const;
      // Mode d'emploi :
      //
      // Contrat :
@@ -68,7 +74,7 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    EventList ( const EventList & unEventList );
+    EventList ( const EventList & aEventList );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :

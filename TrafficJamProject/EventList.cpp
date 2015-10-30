@@ -44,7 +44,7 @@ void EventList::AddEvent(Event* aEvent)
 
 } //----- Fin de Méthode
 
-void EventList::DisplayList()
+void EventList::DisplayList() const
 // Algorithme :
 //
 {
@@ -61,7 +61,7 @@ void EventList::DisplayList()
 	}
 } //----- Fin de Méthode
 
-bool EventList::IsEmpty()
+bool EventList::IsEmpty() const
 // Algorithme :
 //
 {
@@ -76,7 +76,15 @@ bool EventList::IsEmpty()
 
 } //----- Fin de Méthode
 
-unsigned long int* EventList::TrafficNumbers()
+Event* EventList::GetRoot() const
+// Algorithme :
+//
+{
+	return root;
+
+} //----- Fin de Méthode
+
+unsigned long int* EventList::TrafficNumbers() const
 // Algorithme :
 //
 {
@@ -114,7 +122,7 @@ unsigned long int* EventList::TrafficNumbers()
 	return numbers;
 } //----- Fin de Méthode
 
-unsigned long int EventList::GetNbEvents()
+unsigned long int EventList::GetNbEvents() const
 // Algorithme :
 //
 {
@@ -146,14 +154,17 @@ unsigned long int EventList::GetNbEvents()
 
 
 //-------------------------------------------- Constructeurs - destructeur
-//EventList::EventList ( const EventList & unEventList )
+EventList::EventList ( const EventList & aEventList )
 // Algorithme :
 //
-//{
-//#ifdef MAP
-//    cout << "Appel au constructeur de copie de <EventList>" << endl;
-//#endif
-//} //----- Fin de EventList (constructeur de copie)
+{
+#ifdef MAP
+    cout << "Appel au constructeur de copie de <EventList>" << endl;
+#endif
+
+    root = aEventList.GetRoot();
+
+} //----- Fin de EventList (constructeur de copie)
 
 
 EventList::EventList ()

@@ -48,14 +48,20 @@ class SensorLeaf
 	// Contract:
 	//	No contract.
 	
+	virtual ~SensorLeaf ();
+	// Usage:
+	//	Destroys the current SensorLeaf and all its attributes, in particular it's
+	//	Sensor.
+	//	Beware! All the SensorLeaf that are the children of the current leaf will
+	//	be destroyed in a recursive way.
 	//---------------------------------------------------------------------PRIVE
 	protected :
 	//--------------------------------------------------------Méthodes protégées
 	void insertSensor (long int idSensor);
-	// Usage :
+	// Usage:
 	//	Allows to create a new instance of Sensor and place it into the tree.
 	//	The tree is then modified to make it a HEAP back.
-	// Contract :
+	// Contract:
 	//	The tree shouldn't contain any Sensor whose Id is isSensor. Finding a
 	//	specific Sensor will then fail (only part of the sensor's events would
 	//	be retrieved).
@@ -63,8 +69,34 @@ class SensorLeaf
 	bool hasLeftChild ();
 	// Usage:
 	//	Allows to know if a Leaf has a left child or not.
-	// Contract;
+	// Contract:
 	//	No contract.
+
+	bool hasRightChild ();
+	// Usage:
+	//	Allows to know if a Leaf has a right child or not.
+	// Contract:
+	//	No contract.
+
+	void sortTree (Sensor * sensors, int left, int right);
+	// Usage:
+	//	This method is meant to be used upon insertion of a new Sensor. It sorts
+	//	the sensors according to their Ids and puts them back into the tree so
+	//	that the tree is a HEAP again.
+	// Contract:
+	//	No contract.
+
+	Sensor * getAllSensors();
+	// Usage:
+	//	Allows for the gathering of all the Sensors adresses in a table.
+	// Contract:
+	//	To work properly, this method needs to ba applied to the root element of
+	//	the tree.
+
+	Sensor* refillTree(Sensor * sensorTable, SensorLeaf * leaf);
+	// Usage;
+	//	Refills the tree in a recursive way. sensors points towards the next element
+	//	in a table of Sensors to fill the tree. index
 	//--------------------------------------------------------Attributs protégés
 	SensorLeaf * left;
 	SensorLeaf * right;
@@ -74,6 +106,7 @@ class SensorLeaf
 	Sensor * sensor;
 	SensorLeaf ** nextParent;
 	SensorLeaf ** lastElement;
+	int * nbLeaves;
 };
 
 //-----------------------------------------Autres définitions dépendantes de SensorLeaf

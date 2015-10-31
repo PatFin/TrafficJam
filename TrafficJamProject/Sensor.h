@@ -78,10 +78,10 @@ public:
     //
 
     Sensor (long aId);
-        // Mode d'emploi :
-        //
-        // Contrat :
-        //
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 
     virtual ~Sensor ( );
     // Mode d'emploi :

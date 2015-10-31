@@ -54,6 +54,10 @@ class SensorRoot
 	 * The last SensorLeaf inserted into the tree.
 	 */
 	SensorLeaf * lastElement;
+	/*
+	 * The number of elements inside the tree.
+	 */
+	int nbElements;
 };
 
 //----------------------------------Autres définitions dépendantes de SensorRoot

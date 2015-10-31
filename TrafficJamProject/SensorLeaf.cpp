@@ -62,6 +62,27 @@ SensorLeaf::SensorLeaf (Sensor * const aSensor, SensorLeaf * aLeft, SensorLeaf *
 		parent->childLeft = this;
 	}
 	nextParent = parent->nextParent;
+
+	nbLeaves = parent->nbLeaves;
+	*nbLeaves = *nbLeaves +1;
+#ifdef MAP
+	cout << "Using constructor of <SensorLeaf>" << endl;
+	cout << "Il y a maintenant " << *nbLeaves << " leaves in the tree" << endl;
+#endif
+}
+
+SensorLeaf::~SensorLeaf()
+{
+	if (hasLeftChild())
+	{
+		delete(childLeft);
+	}
+	if (hasRightChild())
+	{
+		delete(childRight);
+	}
+
+
 }
 
 //---------------------------------------------------------------------PROTECTED
@@ -71,10 +92,12 @@ void SensorLeaf::insertSensor(long int idSensor)
 //	end of the tree.
 //	Then tree is sorted and the different Sensors are reassigned to a leaf.
 {
+	//Création
 	Sensor * sensor = new Sensor(idSensor);
-	SensorLeaf * leaf = new SensorLeaf(sensor, *lastElement, *nextParent);
+	new SensorLeaf(sensor, *lastElement, *nextParent);
 
-
+	//Tri
+	sortTree(getAllSensors(), 0, *nbLeaves);
 }
 
 bool SensorLeaf::hasLeftChild()
@@ -82,7 +105,57 @@ bool SensorLeaf::hasLeftChild()
 //	By default, upon creation, the children of the leaf point towards itself.
 //	That's how the existence of a child is detected.
 {
-	return childLeft == this;
+	return !(childLeft == this);
+}
+
+bool SensorLeaf::hasRightChild()
+{
+	return !(childRight == this);
+}
+
+void SensorLeaf::sortTree(Sensor * sensors, int left, int right)
+// Algorithm:
+//	The Sensors of the tree are gathered as a pointer table and then sorted in
+//	this table following the quicksort algorithm. The Tree sensors are then
+//	reassigned according to this new sort.
+{
+
+
+}
+
+Sensor * SensorLeaf::refillTree(Sensor * sensorTable, SensorLeaf* leaf)
+// Algorithm:
+//	Recursive algorithm which is going to fill the top and left elements first.
+{
+	leaf->sensor = sensorTable;
+	sensorTable++;
+
+	if (leaf->hasLeftChild())
+	{
+		sensorTable = refillTree(sensorTable, leaf->childLeft);
+	}
+	if (leaf->hasRightChild())
+	{
+		sensorTable = refillTree(sensorTable, leaf->childRight);
+	}
+
+	return sensorTable;
+}
+
+Sensor * SensorLeaf::getAllSensors()
+// Algorithm:
+//	We create a table of size the number of Sensors in the tree. We then go
+//	through the whole tree and gather all the pointers.
+{
+	Sensor * sensorTable [*nbLeaves];
+	SensorLeaf * currentLeaf = this;
+	int n = 0;
+	while (n < *nbLeaves)
+	{
+		sensorTable[n++] = currentLeaf->sensor;
+	}
+
+	return *sensorTable;
 }
 //-------------------------------------------------------------------------PRIVE
 

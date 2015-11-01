@@ -29,7 +29,7 @@ class SensorLeaf
 	// 	Allows to put a new Event in the tree.
 	// Contract:
 	//	No contract.
-	int GetSensor (int idSensor, Sensor ** sensor);
+	int GetSensor (const int idSensor, Sensor ** result);
 	// Usage
 	//	Allows to get a Sensor specified by its id. The pointer sensor given as
 	//	parameter will point towards the Sensor.
@@ -78,7 +78,7 @@ class SensorLeaf
 	// Contract:
 	//	No contract.
 
-	void sortTree (Sensor * sensors, int left, int right);
+	void sortTree ();
 	// Usage:
 	//	This method is meant to be used upon insertion of a new Sensor. It sorts
 	//	the sensors according to their Ids and puts them back into the tree so
@@ -86,9 +86,11 @@ class SensorLeaf
 	// Contract:
 	//	No contract.
 
-	Sensor * getAllSensors();
+	Sensor ** getAllSensors(Sensor ** sensorTable, SensorLeaf * leaf);
 	// Usage:
 	//	Allows for the gathering of all the Sensors adresses in a table.
+	//	The first argument should be a pointer on a table of size the number of
+	//	elements in the tree. The second should be the root leaf of the tree.
 	// Contract:
 	//	To work properly, this method needs to ba applied to the root element of
 	//	the tree.
@@ -97,6 +99,12 @@ class SensorLeaf
 	// Usage;
 	//	Refills the tree in a recursive way. sensors points towards the next element
 	//	in a table of Sensors to fill the tree. index
+
+	int getSensorLeaf(const int sensorId, SensorLeaf ** result);
+	// Usage:
+	//	Allows to get the leaf containing the Sensor whose id is sensorId.
+	//	If such a leaf is found in the tree, the method returns 0. If not found,
+	//	itwill return 1.
 	//--------------------------------------------------------Attributs protégés
 	SensorLeaf * left;
 	SensorLeaf * right;

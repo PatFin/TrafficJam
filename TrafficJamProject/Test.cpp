@@ -1,21 +1,23 @@
 using namespace std;
 
-#include <iostream>
-#include "Sensor.h"
+#include "SensorRoot.h"
 
 int main()
 {
-	Sensor* sens = new Sensor(3);
+	Sensor* sens;
+	SensorRoot r;
 
-	sens->AddEvent(2015, 10, 26, 21, 33, 1, 'V');
-	sens->AddEvent(2015, 10, 27, 21, 33, 1, 'V');
-	sens->AddEvent(2015, 10, 28, 21, 33, 1, 'V');
-	sens->AddEvent(2015, 10, 26, 21, 33, 2, 'V');
+	r.InsertSensorValue(0, 2015, 10, 26, 21, 33, 1, 'V');
+	r.InsertSensorValue(0, 2015, 10, 26, 21, 33, 1, 'V');
+	r.InsertSensorValue(0, 2015, 10, 27, 21, 33, 1, 'V');
 
 	//cout << sens->GetEvents(1, 21, 33)->GetNbEvents() << endl;
+	r.GetSensor(0, &sens);
+	sens->GetEvents(0, 21, 33)->DisplayList();
 
+	r.InsertSensorValue(1, 2015, 10, 28, 21, 33, 1, 'V');
+//	r.InsertSensorValue(1, 2015, 10, 26, 21, 33, 2, 'V');
 	sens->GetEvents(1, 21, 33)->DisplayList();
-
 	//sens->GetEvents(2, 21, 33)->DisplayList();
 
 	//cout << *sens << endl;

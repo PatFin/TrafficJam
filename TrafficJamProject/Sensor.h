@@ -10,6 +10,7 @@
 #define SENSOR_H_
 
 //--------------------------------------------------- Interfaces utilisées
+#include <iostream>
 #include "EventList.h"
 
 //------------------------------------------------------------- Constantes 

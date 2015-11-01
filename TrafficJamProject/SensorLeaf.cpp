@@ -58,7 +58,7 @@ int SensorLeaf::GetSensor(int idSensor, Sensor**result)
 //--------------------------------------------------------Surcharge d'opérateurs
 //---------------------------------------------------Constructeurs - Destructeur
 SensorLeaf::SensorLeaf(int * numberLeaves, SensorLeaf ** aParent,
-		Sensor ** alastLeaf)
+		SensorLeaf ** alastLeaf)
 {
 	parent = this;
 	left = this;

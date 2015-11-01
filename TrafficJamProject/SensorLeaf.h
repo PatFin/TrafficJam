@@ -41,7 +41,7 @@ class SensorLeaf
 	//----------------------------------------------------Surcharge d'opérateurs
 	//-----------------------------------------------Constructeurs - Destructeur
 
-	SensorLeaf(int * numberLeaves, SensorLeaf ** aParent, Sensor ** alastLeaf)
+	SensorLeaf(int * numberLeaves, SensorLeaf ** aParent, SensorLeaf ** alastLeaf);
 	// Usage:
 	//	This default constructor should only be used in the case of a tree creation.
 	//	The values of all the arguments will be set to the empty tree conditions.

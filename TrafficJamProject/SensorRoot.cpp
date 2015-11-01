@@ -33,7 +33,7 @@ void SensorRoot::InsertSensorValue (long int idSensor,unsigned int year,
 //---------------------------------------------------Constructeurs - Destructeur
 SensorRoot::SensorRoot()
 {
-	root = new SensorLeaf(nbElements, &nextParent, &lastElement);
+	root = new SensorLeaf(&nbElements, &nextParent, &lastElement);
 }
 
 SensorRoot::~SensorRoot()

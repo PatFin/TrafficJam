@@ -1,4 +1,4 @@
-//--------------------- Inteface de la SensorRoot xxx (SensorRoot.h) ----------------------
+//--------------------- Inteface de la classe SensorRoot (SensorRoot.h) ----------------------
 #if ! defined (SensorRoot_H)
 #define SensorRoot_H
 
@@ -11,7 +11,7 @@
 //------------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------------
-// Rôle de la SensorRoot SensorRoot
+// Role of class SensorRoot
 // TODO
 //------------------------------------------------------------------------------
 
@@ -30,14 +30,18 @@ class SensorRoot
 	//	The pointer sensor given as parameter should not point towards an
 	//	existing Sensor. Otherwise, using this method might result in memory leak.
 
-	void InsertSensorValue (long int idSensor,unsigned int year,unsigned int month,unsigned int day,unsigned int hour, unsigned int minute, unsigned int dayWeek, unsigned int traffic);
+	void InsertSensorValue (long int idSensor,unsigned int year,unsigned int month,
+			unsigned int day,unsigned int hour, unsigned int minute,
+			unsigned int dayWeek, unsigned int traffic);
 	// Usage:
 	// 	Allows to add a new Event into the tree.
 	// Contract:
 	//	No contract.
 	//----------------------------------------------------Surcharge d'opérateurs
 	//-----------------------------------------------Constructeurs - Destructeur
+	SensorRoot ();
 	
+	virtual ~SensorRoot();
 	//---------------------------------------------------------------------PRIVE
 	protected :
 	//--------------------------------------------------------Méthodes protégées

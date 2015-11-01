@@ -13,7 +13,9 @@ using namespace std;
 //------------------------------------------------------------------------PUBLIC
 
 //------------------------------------------------------------Méthodes publiques
-void SensorLeaf::InsertSensorValue (long int idSensor,unsigned int year,unsigned int month,unsigned int day,unsigned int hour, unsigned int minute, unsigned int dayWeek, unsigned int traffic)
+void SensorLeaf::InsertSensorValue (long int idSensor,unsigned int year,
+		unsigned int month,unsigned int day,unsigned int hour,
+		unsigned int minute, unsigned int dayWeek, unsigned int traffic)
 // Algorithm:
 //	We first look for a sensor in the tree whose id matches that of the one given
 //	as parameter.
@@ -22,11 +24,21 @@ void SensorLeaf::InsertSensorValue (long int idSensor,unsigned int year,unsigned
 //	event is added to the Sensor.
 {
 	Sensor * sensor;
-	if (GetSensor(idSensor, &sensor) == 1)
+	if (*nbLeaves > 0)
 	{
-		insertSensor(idSensor);
+		if (GetSensor(idSensor, &sensor) == 1)
+		{
+			//If the sensor is not found we create it.
+			sensor = insertSensor(idSensor);
+		}
 	}
-
+	else
+	{
+		//Specific empty tree case.
+		sensor = new Sensor(idSensor);
+		this->sensor = sensor;
+		*nbLeaves = 1;
+	}
 	sensor->AddEvent(year,month,day,hour, minute, dayWeek, traffic);
 }
 
@@ -45,6 +57,24 @@ int SensorLeaf::GetSensor(int idSensor, Sensor**result)
 }
 //--------------------------------------------------------Surcharge d'opérateurs
 //---------------------------------------------------Constructeurs - Destructeur
+SensorLeaf::SensorLeaf(int * numberLeaves, SensorLeaf ** aParent,
+		Sensor ** alastLeaf)
+{
+	parent = this;
+	left = this;
+	right = this;
+	childLeft = this;
+	childRight = this;
+
+	nbLeaves = numberLeaves;
+	nextParent = aParent;
+	lastElement = alastLeaf;
+
+	*nbLeaves = 0;
+	*nextParent = this;
+	*lastElement = this;
+}
+
 SensorLeaf::SensorLeaf (Sensor * const aSensor, SensorLeaf * aLeft, SensorLeaf * aParent)
 {
 	sensor = aSensor;
@@ -55,7 +85,7 @@ SensorLeaf::SensorLeaf (Sensor * const aSensor, SensorLeaf * aLeft, SensorLeaf *
 	left = aLeft;
 	aLeft->right = this;
 
-	//The last element of the tree is now this. Using the double pointer, all
+	//The last element of the tree is now 'this'. Using the double pointer, all
 	//the elements of the tree are modified.
 	this->lastElement = parent->lastElement;
 	*lastElement = this;
@@ -75,7 +105,7 @@ SensorLeaf::SensorLeaf (Sensor * const aSensor, SensorLeaf * aLeft, SensorLeaf *
 	nbLeaves = parent->nbLeaves;
 	*nbLeaves = *nbLeaves +1;
 #ifdef MAP
-	cout << "Using constructor of <SensorLeaf>" << endl;
+	cout << "Using constructor 2 of <SensorLeaf>" << endl;
 	cout << "*There are now " << *nbLeaves << " leaves in the tree" << endl;
 #endif
 }
@@ -95,7 +125,7 @@ SensorLeaf::~SensorLeaf()
 }
 
 //---------------------------------------------------------------------PROTECTED
-void SensorLeaf::insertSensor(long int idSensor)
+Sensor * SensorLeaf::insertSensor(long int idSensor)
 // Algorithm:
 //	A new Sensor is created as well as a new SensorLeaf. The lot is placed at the
 //	end of the tree.
@@ -107,6 +137,7 @@ void SensorLeaf::insertSensor(long int idSensor)
 
 	//Sorting
 	sortTree();
+	return sensor;
 }
 
 bool SensorLeaf::hasLeftChild()
@@ -137,10 +168,11 @@ void SensorLeaf::sortTree()
 	while (index > 0 && sensor[index -1]->GetId() < sensor[index]->GetId())
 	{
 		Sensor * buff = sensor[index];
-		sensor[index] = sensor[--index];
+		sensor[index] = sensor[index -1];
+		index --;
 		sensor[index] = buff;
 	}
-
+	refillTree(sensor[1], this);
 }
 
 Sensor * SensorLeaf::refillTree(Sensor * sensorTable, SensorLeaf* leaf)

@@ -41,12 +41,19 @@ class SensorLeaf
 	//----------------------------------------------------Surcharge d'opérateurs
 	//-----------------------------------------------Constructeurs - Destructeur
 
+	SensorLeaf(int * numberLeaves, SensorLeaf ** aParent, Sensor ** alastLeaf)
+	// Usage:
+	//	This default constructor should only be used in the case of a tree creation.
+	//	The values of all the arguments will be set to the empty tree conditions.
+	//	Hence, its use should be restricted to the constructor in class SensorRoot.
 	SensorLeaf (Sensor * const aSensor, SensorLeaf * aLeft, SensorLeaf * aParent);
 	// Usage:
 	//	Allows to create a new SensorLeaf with an initial sensor. The sensor isn't
-	//	modified in this method.
+	//	modified in this method. Thisconstructor also places the newly created Sensor
+	//	in the tree.
 	// Contract:
-	//	No contract.
+	//	The sensor given as argument shouldn't have the same Id as a Sensor already
+	//	in the tree.
 	
 	virtual ~SensorLeaf ();
 	// Usage:
@@ -57,10 +64,11 @@ class SensorLeaf
 	//---------------------------------------------------------------------PRIVE
 	protected :
 	//--------------------------------------------------------Méthodes protégées
-	void insertSensor (long int idSensor);
+	Sensor * insertSensor (long int idSensor);
 	// Usage:
 	//	Allows to create a new instance of Sensor and place it into the tree.
 	//	The tree is then modified to make it a HEAP back.
+	//	The method returns the newly created Sensor.
 	// Contract:
 	//	The tree shouldn't contain any Sensor whose Id is isSensor. Finding a
 	//	specific Sensor will then fail (only part of the sensor's events would

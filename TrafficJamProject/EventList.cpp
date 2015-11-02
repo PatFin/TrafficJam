@@ -88,7 +88,7 @@ unsigned long int* EventList::TrafficNumbers() const
 // Algorithme :
 //
 {
-	unsigned long int numbers[4] = {0,0,0,0};
+	static unsigned long int numbers[4] = {0, 0, 0, 0};
 
 	Event* cursor = root;
 
@@ -134,7 +134,6 @@ unsigned long int EventList::GetNbEvents() const
 	{
 		if (cursor != root)
 		{
-			cout << *cursor << endl;
 			nb++;
 		}
 

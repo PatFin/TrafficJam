@@ -56,6 +56,12 @@ public:
     // Contrat :
     //
 
+    float* GetAverageTraffic() const;
+        // Mode d'emploi :
+        //
+        // Contrat :
+        //
+
 
 //------------------------------------------------- Surcharge d'opérateurs
     Sensor & operator = ( const Sensor & unSensor );

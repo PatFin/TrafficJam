@@ -18,7 +18,7 @@ int main()
 	r.InsertSensorValue(1, 2015, 10, 30, 21, 33, 1, 'V');
 	r.InsertSensorValue(1, 2015, 10, 26, 21, 33, 1, 'V');
 	r.InsertSensorValue(1, 2015, 10, 27, 21, 33, 1, 'V');
-	r.GetSensor(1, &sens);
+	cout << r.GetSensor(1, &sens) << endl;
 	sens->GetEvents(1, 21, 33)->DisplayList();
 
 	//cout << *sens << endl;

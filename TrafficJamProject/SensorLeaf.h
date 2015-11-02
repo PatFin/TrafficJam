@@ -94,7 +94,7 @@ class SensorLeaf
 	// Contract:
 	//	No contract.
 
-	Sensor ** getAllSensors(Sensor ** sensorTable, SensorLeaf * leaf);
+	Sensor ** getAllSensors(Sensor * sensorTable [], SensorLeaf * leaf);
 	// Usage:
 	//	Allows for the gathering of all the Sensors adresses in a table.
 	//	The first argument should be a pointer on a table of size the number of

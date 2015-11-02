@@ -87,10 +87,10 @@ SensorLeaf::SensorLeaf (Sensor * const aSensor, SensorLeaf * aLeft, SensorLeaf *
 
 	//The last element of the tree is now 'this'. Using the double pointer, all
 	//the elements of the tree are modified.
+	parent = aParent;
 	this->lastElement = parent->lastElement;
 	*lastElement = this;
 
-	parent = aParent;
 	if(parent->hasLeftChild())
 	{
 		parent->childRight = this;
@@ -101,7 +101,6 @@ SensorLeaf::SensorLeaf (Sensor * const aSensor, SensorLeaf * aLeft, SensorLeaf *
 		parent->childLeft = this;
 	}
 	nextParent = parent->nextParent;
-
 	nbLeaves = parent->nbLeaves;
 	*nbLeaves = *nbLeaves +1;
 #ifdef MAP
@@ -172,7 +171,7 @@ void SensorLeaf::sortTree()
 		index --;
 		sensor[index] = buff;
 	}
-	refillTree(sensor[1], this);
+	refillTree(sensor[0], this);
 }
 
 Sensor * SensorLeaf::refillTree(Sensor * sensorTable, SensorLeaf* leaf)
@@ -194,7 +193,7 @@ Sensor * SensorLeaf::refillTree(Sensor * sensorTable, SensorLeaf* leaf)
 	return sensorTable;
 }
 
-Sensor ** SensorLeaf::getAllSensors(Sensor ** sensorTable, SensorLeaf * leaf)
+Sensor ** SensorLeaf::getAllSensors(Sensor * sensorTable [], SensorLeaf * leaf)
 // Algorithm:
 //	We go through the whole tree going to the left elements first in a
 //	recursive process. We gather all the pointers of all the Sensors contained.
@@ -211,7 +210,7 @@ Sensor ** SensorLeaf::getAllSensors(Sensor ** sensorTable, SensorLeaf * leaf)
 		iterator = getAllSensors(iterator, leaf->childLeft);
 	}
 
-	return sensorTable;
+	return iterator;
 }
 
 int SensorLeaf::getSensorLeaf(int idSensor, SensorLeaf **result)

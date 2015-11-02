@@ -24,17 +24,18 @@ void SensorLeaf::InsertSensorValue (long int idSensor,unsigned int year,
 //	event is added to the Sensor.
 {
 	Sensor * sensor;
-	if (*nbLeaves > 1)
+	if (*nbLeaves > 0)
 	{
+		//If the sensor is not found we create it and add it to the tree.
 		if (GetSensor(idSensor, &sensor) == 1)
 		{
-			//If the sensor is not found we create it.
+
 			sensor = insertSensor(idSensor);
 
-			//Specific case when adding the second element to the tree.
+			//Specific case when adding the second leaf to the tree.
 			if (*nbLeaves == 2)
 			{
-				right = childRight;
+				right = childLeft;
 			}
 		}
 	}
@@ -111,6 +112,7 @@ SensorLeaf::SensorLeaf (Sensor * const aSensor, SensorLeaf * aLeft, SensorLeaf *
 	this->lastElement = parent->lastElement;
 	*lastElement = this;
 
+	nextParent = parent->nextParent;
 	if(parent->hasLeftChild())
 	{
 		parent->childRight = this;
@@ -120,7 +122,6 @@ SensorLeaf::SensorLeaf (Sensor * const aSensor, SensorLeaf * aLeft, SensorLeaf *
 	{
 		parent->childLeft = this;
 	}
-	nextParent = parent->nextParent;
 	nbLeaves = parent->nbLeaves;
 	*nbLeaves = *nbLeaves +1;
 #ifdef MAP
@@ -182,15 +183,32 @@ void SensorLeaf::sortTree()
 	Sensor * sensor [*nbLeaves];
 	getAllSensors(sensor, this);
 
+	cout << "Tableau avant tri" << endl;
+	int a;
+	for (a= 0;a<*nbLeaves; a++)
+	{
+		cout << sensor[a]->GetId()<< endl;
+	}
+
 	//Bubble sort starting from the end.
 	int index = *nbLeaves -1;
-	while (index > 0 && sensor[index -1]->GetId() < sensor[index]->GetId())
+	while (index > 0)
 	{
-		Sensor * buff = sensor[index];
-		sensor[index] = sensor[index -1];
+		if (sensor[index -1]->GetId() < sensor[index]->GetId())
+		{
+			Sensor * buff = sensor[index];
+			sensor[index] = sensor[index -1];
+			sensor[index-1] = buff;
+		}
 		index --;
-		sensor[index] = buff;
 	}
+
+	cout << "Tableau après tri" << endl;
+	for (a= 0;a<*nbLeaves; a++)
+	{
+		cout << sensor[a]->GetId()<< endl;
+	}
+
 
 	refillTree(sensor, this);
 }
@@ -220,18 +238,18 @@ Sensor ** SensorLeaf::getAllSensors(Sensor * sensorTable [], SensorLeaf * leaf)
 //	recursive process. We gather all the pointers of all the Sensors contained.
 {
 	*sensorTable = leaf->sensor;
-	Sensor ** iterator = sensorTable +1;
+	sensorTable ++;
 
 	if (leaf->hasLeftChild())
 	{
-		iterator = getAllSensors(iterator, leaf->childLeft);
+		sensorTable = getAllSensors(sensorTable, leaf->childLeft);
 	}
 	if (leaf->hasRightChild())
 	{
-		iterator = getAllSensors(iterator, leaf->childLeft);
+		sensorTable = getAllSensors(sensorTable, leaf->childRight);
 	}
 
-	return iterator;
+	return sensorTable;
 }
 
 int SensorLeaf::getSensorLeaf(int idSensor, SensorLeaf **result)
@@ -244,19 +262,17 @@ int SensorLeaf::getSensorLeaf(int idSensor, SensorLeaf **result)
 	}
 	else
 	{
-		if (idSensor < id)
+		if (hasRightChild() && idSensor < childRight->sensor->GetId())
 		{
-			if (hasLeftChild())
-			{
-				return childLeft->getSensorLeaf(idSensor, result);
-			}
+			return getSensorLeaf(idSensor, result);
+		}
+		else if (hasLeftChild() && idSensor < childLeft->sensor->GetId())
+		{
+			return getSensorLeaf(idSensor, result);
 		}
 		else
 		{
-			if (hasRightChild())
-			{
-				return childRight->getSensorLeaf(idSensor, result);
-			}
+			return 1;
 		}
 #ifdef MAP
 		cout << "The Sensor n°:" << idSensor << " was not found" << endl;

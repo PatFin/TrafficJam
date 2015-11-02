@@ -56,7 +56,7 @@ public:
     // Contrat :
     //
 
-    float* GetAverageTraffic() const;
+    float* GetAverageTraffic();
         // Mode d'emploi :
         //
         // Contrat :
@@ -113,6 +113,8 @@ private:
     long int id;
 
     EventList* events[7][24][60];
+
+    float averageTraffic[4];
 
 //---------------------------------------------------------- Classes amies
 

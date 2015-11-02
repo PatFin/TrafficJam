@@ -42,6 +42,25 @@ void EventList::AddEvent(Event* aEvent)
 		aEvent->SetNext(NULL);
 	}
 
+	switch (aEvent->GetState())
+	{
+	case 'V' :
+		trafficNumbers[0]++;
+		break;
+
+	case 'J' :
+		trafficNumbers[1]++;
+		break;
+
+	case 'R' :
+		trafficNumbers[2]++;
+		break;
+
+	case 'N' :
+		trafficNumbers[3]++;
+		break;
+	}
+
 } //----- Fin de Méthode
 
 void EventList::DisplayList() const
@@ -84,44 +103,6 @@ Event* EventList::GetRoot() const
 
 } //----- Fin de Méthode
 
-unsigned long int* EventList::TrafficNumbers() const
-// Algorithme :
-//
-{
-	static unsigned long int numbers[4] = {0, 0, 0, 0};
-
-	Event* cursor = root;
-
-	while (cursor != NULL)
-	{
-		if (cursor != root)
-		{
-			switch(cursor->GetState())
-			{
-			case 'V' :
-				numbers[0]++;
-				break;
-
-			case 'J' :
-				numbers[1]++;
-				break;
-
-			case 'R' :
-				numbers[2]++;
-				break;
-
-			case 'N' :
-				numbers[3]++;
-				break;
-			}
-		}
-
-		cursor = cursor->GetNext();
-	}
-
-	return numbers;
-} //----- Fin de Méthode
-
 unsigned long int EventList::GetNbEvents() const
 // Algorithme :
 //
@@ -141,6 +122,13 @@ unsigned long int EventList::GetNbEvents() const
 	}
 
 	return nb;
+} //----- Fin de Méthode
+
+unsigned long int* EventList::GetTrafficNumbers()
+// Algorithme :
+//
+{
+	return trafficNumbers;
 } //----- Fin de Méthode
 
 
@@ -175,6 +163,13 @@ EventList::EventList ()
 #endif
 
     root = new Event();
+
+    int i;
+
+    for (i = 0; i < 4; i++)
+    {
+    	trafficNumbers[i] = 0;
+    }
 } //----- Fin de EventList
 
 

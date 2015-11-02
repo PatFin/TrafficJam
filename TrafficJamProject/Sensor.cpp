@@ -51,13 +51,13 @@ void Sensor::AddEvent(unsigned int year, unsigned int month, unsigned int day,
 	} //----- Fin de Méthode
 
 float* Sensor::GetAverageTrafficMinute(unsigned int d, unsigned int h,
-    		unsigned int m) const
+    								   unsigned int m) const
 // Algorithme :
 //
 	{
-		float* stats;
+		static float stats[4];
 
-		unsigned long int* trafficNumbers = events[d-1][h][m]->TrafficNumbers();
+		unsigned long int* trafficNumbers = events[d-1][h][m]->GetTrafficNumbers();
 		unsigned long int nbOfEvents = events[d-1][h][m]->GetNbEvents();
 
 		int i;
@@ -81,17 +81,20 @@ float* Sensor::GetAverageTrafficMinute(unsigned int d, unsigned int h,
 		return stats;
 	} //----- Fin de Méthode
 
-float* Sensor::GetAverageTraffic() const
+float* Sensor::GetAverageTraffic()
 // Algorithme :
 //
 	{
-		float* stats;
-
-		unsigned long int* numbers;
+		unsigned long int numbers[4];
 		unsigned long int* localNumbers;
 
 		int i, j, k, n;
 		unsigned long int nbEvents = 0;
+
+		for (n = 0; n < 4; n++)
+		{
+			numbers[n] = 0;
+		}
 
 		for (i = 0; i < 7; i++)
 		{
@@ -101,11 +104,11 @@ float* Sensor::GetAverageTraffic() const
 				{
 					nbEvents += events[i][j][k]->GetNbEvents();
 
-					localNumbers = events[i][j][k]->TrafficNumbers();
+					localNumbers = events[i][j][k]->GetTrafficNumbers();
 
 					for (n = 0; n < 4; n++)
 					{
-						numbers[i] += *(localNumbers + i);
+						numbers[n] += *(localNumbers + n);
 					}
 				}
 			}
@@ -115,13 +118,11 @@ float* Sensor::GetAverageTraffic() const
 		{
 			for (n = 0; n < 4; n++)
 					{
-						stats[i] = (float)numbers[i] / nbEvents;
-
-						cout << stats[i] << endl;
+						averageTraffic[n] = (float)numbers[n] / nbEvents;
 					}
 		}
 
-		return stats;
+		return averageTraffic;
 	} //----- Fin de Méthode
 
 

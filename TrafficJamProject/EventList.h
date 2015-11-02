@@ -53,13 +53,19 @@ public:
      // Contrat :
      //
 
-     unsigned long int* TrafficNumbers() const;
+     unsigned long int* GetTrafficNumbers() const;
      // Mode d'emploi :
      //
      // Contrat :
      //
 
      unsigned long int GetNbEvents() const;
+     // Mode d'emploi :
+     //
+     // Contrat :
+     //
+
+     unsigned long int* GetTrafficNumbers();
      // Mode d'emploi :
      //
      // Contrat :
@@ -107,6 +113,7 @@ private:
 //------------------------------------------------------- Attributs privés
 
     Event* root;
+    unsigned long int trafficNumbers[4];
 
 //---------------------------------------------------------- Classes amies
 

@@ -38,6 +38,9 @@ class SensorLeaf
 	// Contract :
 	//	sensor shouldn't have been initialized. If not the case, using this method
 	//	will result in memory leaks.
+	void Display();
+	// Usage:
+	//	Displays the tree.
 	//----------------------------------------------------Surcharge d'opérateurs
 	//-----------------------------------------------Constructeurs - Destructeur
 
@@ -103,7 +106,7 @@ class SensorLeaf
 	//	To work properly, this method needs to ba applied to the root element of
 	//	the tree.
 
-	Sensor* refillTree(Sensor * sensorTable, SensorLeaf * leaf);
+	Sensor ** refillTree(Sensor ** sensorTable, SensorLeaf * leaf);
 	// Usage;
 	//	Refills the tree in a recursive way. sensors points towards the next element
 	//	in a table of Sensors to fill the tree. index

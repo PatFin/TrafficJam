@@ -3,3 +3,4 @@
 *.mk
 Debug
 Test.cpp
+/TestPatrick.cpp

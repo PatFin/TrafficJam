@@ -29,6 +29,11 @@ void SensorRoot::InsertSensorValue (long int idSensor,unsigned int year,
 	root->InsertSensorValue(idSensor, year, month, day, hour, minute,
 			dayWeek, traffic);
 }
+
+void SensorRoot::Display()
+{
+	root->Display();
+}
 //--------------------------------------------------------Surcharge d'opérateurs
 //---------------------------------------------------Constructeurs - Destructeur
 SensorRoot::SensorRoot()

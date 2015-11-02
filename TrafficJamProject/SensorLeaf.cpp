@@ -24,12 +24,18 @@ void SensorLeaf::InsertSensorValue (long int idSensor,unsigned int year,
 //	event is added to the Sensor.
 {
 	Sensor * sensor;
-	if (*nbLeaves > 0)
+	if (*nbLeaves > 1)
 	{
 		if (GetSensor(idSensor, &sensor) == 1)
 		{
 			//If the sensor is not found we create it.
 			sensor = insertSensor(idSensor);
+
+			//Specific case when adding the second element to the tree.
+			if (*nbLeaves == 2)
+			{
+				right = childRight;
+			}
 		}
 	}
 	else
@@ -53,6 +59,20 @@ int SensorLeaf::GetSensor(int idSensor, Sensor**result)
 	else
 	{
 		return 1;
+	}
+}
+
+void SensorLeaf::Display()
+{
+	cout << sensor->GetId() << endl;
+	cout << sensor << endl;
+	if(hasLeftChild())
+	{
+		childLeft->Display();
+	}
+	if(hasRightChild())
+	{
+		childRight->Display();
 	}
 }
 //--------------------------------------------------------Surcharge d'opérateurs
@@ -171,14 +191,15 @@ void SensorLeaf::sortTree()
 		index --;
 		sensor[index] = buff;
 	}
-	refillTree(sensor[0], this);
+
+	refillTree(sensor, this);
 }
 
-Sensor * SensorLeaf::refillTree(Sensor * sensorTable, SensorLeaf* leaf)
+Sensor ** SensorLeaf::refillTree(Sensor ** sensorTable, SensorLeaf* leaf)
 // Algorithm:
 //	Recursive algorithm which is going to fill the top left elements first.
 {
-	leaf->sensor = sensorTable;
+	leaf->sensor = *sensorTable;
 	sensorTable++;
 
 	if (leaf->hasLeftChild())

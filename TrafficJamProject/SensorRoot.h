@@ -37,6 +37,10 @@ class SensorRoot
 	// 	Allows to add a new Event into the tree.
 	// Contract:
 	//	No contract.
+
+	void Display();
+	// Usage:
+	//	Displays the tree.
 	//----------------------------------------------------Surcharge d'opérateurs
 	//-----------------------------------------------Constructeurs - Destructeur
 	SensorRoot ();

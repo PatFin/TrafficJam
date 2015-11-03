@@ -254,24 +254,25 @@ Sensor ** SensorLeaf::getAllSensors(Sensor * sensorTable [], SensorLeaf * leaf)
 
 int SensorLeaf::getSensorLeaf(int idSensor, SensorLeaf **result)
 {
-	int id = sensor->GetId();
-	if (id == idSensor)
+	int idLeaf = sensor->GetId();
+	if (idLeaf == idSensor)
 	{
 		*result = this;
 		return 0;
 	}
 	else
 	{
-		if (hasRightChild() && idSensor < childRight->sensor->GetId())
+		if (hasRightChild() && idSensor <= childRight->sensor->GetId())
 		{
-			return getSensorLeaf(idSensor, result);
+			return childRight->getSensorLeaf(idSensor, result);
 		}
-		else if (hasLeftChild() && idSensor < childLeft->sensor->GetId())
+		else if (hasLeftChild() && idSensor <= childLeft->sensor->GetId())
 		{
-			return getSensorLeaf(idSensor, result);
+			return childLeft->getSensorLeaf(idSensor, result);
 		}
 		else
 		{
+			//It isn't possible to find the Sensor with the corresponding ID, we return 1.
 			return 1;
 		}
 #ifdef MAP

@@ -49,14 +49,7 @@ public:
     // Contrat :
     //
 
-    float* GetAverageTrafficMinute(unsigned int d7, unsigned int h,
-    		unsigned int m) const;
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    float* GetAverageTraffic();
+    float* GetAverageTraffic() const;
         // Mode d'emploi :
         //
         // Contrat :
@@ -114,7 +107,8 @@ private:
 
     EventList* events[7][24][60];
 
-    float averageTraffic[4];
+    unsigned long int trafficNumbers[4];
+    unsigned long int nbOfEvents;
 
 //---------------------------------------------------------- Classes amies
 

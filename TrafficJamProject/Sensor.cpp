@@ -48,78 +48,47 @@ void Sensor::AddEvent(unsigned int year, unsigned int month, unsigned int day,
 //
 	{
 		events[d7-1][hour][minute]->AddEvent(new Event(year, month, day, state));
+
+		switch (state)
+		{
+		case 'V' :
+			trafficNumbers[0]++;
+			break;
+
+		case 'J' :
+			trafficNumbers[1]++;
+			break;
+
+		case 'R' :
+			trafficNumbers[2]++;
+			break;
+
+		case 'N' :
+			trafficNumbers[3]++;
+			break;
+		}
+
+		nbOfEvents++;
 	} //----- Fin de Méthode
 
-float* Sensor::GetAverageTrafficMinute(unsigned int d, unsigned int h,
-    								   unsigned int m) const
+float* Sensor::GetAverageTraffic() const
 // Algorithme :
 //
 	{
-		static float stats[4];
-
-		unsigned long int* trafficNumbers = events[d-1][h][m]->GetTrafficNumbers();
-		unsigned long int nbOfEvents = events[d-1][h][m]->GetNbEvents();
+		float* averageTraffic;
 
 		int i;
 
-		if (nbOfEvents != 0)
+		for (i = 0; i < 4; i++)
 		{
-			for (i = 0; i < 4; i++)
+			if (nbOfEvents != 0)
 			{
-				stats[i] = (float) *(trafficNumbers + i) / nbOfEvents;
+				averageTraffic[i] = (float)trafficNumbers[i] / nbOfEvents;
 			}
-		}
-		else
-		{
-			for (i = 0; i < 4; i++)
+			else
 			{
-				stats[i] = 0;
+				averageTraffic[i] = 0;
 			}
-		}
-
-
-		return stats;
-	} //----- Fin de Méthode
-
-float* Sensor::GetAverageTraffic()
-// Algorithme :
-//
-	{
-		unsigned long int numbers[4];
-		unsigned long int* localNumbers;
-
-		int i, j, k, n;
-		unsigned long int nbEvents = 0;
-
-		for (n = 0; n < 4; n++)
-		{
-			numbers[n] = 0;
-		}
-
-		for (i = 0; i < 7; i++)
-		{
-			for (j = 0; j < 24; j++)
-			{
-				for (k = 0; k < 60; k++)
-				{
-					nbEvents += events[i][j][k]->GetNbEvents();
-
-					localNumbers = events[i][j][k]->GetTrafficNumbers();
-
-					for (n = 0; n < 4; n++)
-					{
-						numbers[n] += *(localNumbers + n);
-					}
-				}
-			}
-		}
-
-		if (nbEvents != 0)
-		{
-			for (n = 0; n < 4; n++)
-					{
-						averageTraffic[n] = (float)numbers[n] / nbEvents;
-					}
 		}
 
 		return averageTraffic;
@@ -167,6 +136,13 @@ Sensor::Sensor ()
     		}
     	}
     }
+
+    for (i = 0; i < 4; i++)
+    {
+    	trafficNumbers[i] = 0;
+    }
+
+    nbOfEvents = 0;
 } //----- Fin de Sensor
 
 Sensor::Sensor (long int aId)
@@ -191,6 +167,13 @@ Sensor::Sensor (long int aId)
        		}
        	}
     }
+
+    for (i = 0; i < 4; i++)
+        {
+        	trafficNumbers[i] = 0;
+        }
+
+    nbOfEvents = 0;
 } //----- Fin de Sensor
 
 

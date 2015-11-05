@@ -23,8 +23,9 @@ class City
 	//--------------------------------------------------------------------PUBLIC
 	public : 
 	//--------------------------------------------------------Méthodes publiques
-	void InsertSensorValue (int idSensor, int year, int month, int day, int hour,
-			int minute, int dayWeek, char traffic);
+	void InsertSensorValue (long int idSensor,unsigned int year,unsigned int month,
+			unsigned int day,unsigned int hour, unsigned int minute,
+			unsigned int dayWeek, unsigned int traffic);
 	// Mode d'emploi :
 	// 	Allows to add a new Event to the sensor whose id is that of the first
 	// 	parameter.

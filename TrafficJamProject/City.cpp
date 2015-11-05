@@ -14,6 +14,14 @@ using namespace std;
 
 //------------------------------------------------------------Méthodes publiques
 
+void City::InsertSensorValue(long int idSensor,unsigned int year,unsigned int month,
+		unsigned int day,unsigned int hour, unsigned int minute,
+		unsigned int dayWeek, unsigned int traffic)
+{
+	sensorTree->InsertSensorValue(idSensor, year, month, day, hour, minute, dayWeek,
+			traffic);
+}
+
 void City::SensorStats(int idSensor)
 {
 	Sensor** sens;

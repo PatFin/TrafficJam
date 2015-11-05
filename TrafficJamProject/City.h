@@ -57,10 +57,10 @@ class City
 	// Contrat :
 	//	No contract.
 	
-	//virtual ~City ();
+	virtual ~City ();
 	// Mode d'emploi :
-	//	This desstructor allows the user to clear the object previously created.
-	// Contrat :
+	//	This destructor allows the user to clear the object previously created.
+	// Contract :
 	//	No contract.
 	//---------------------------------------------------------------------PRIVE
 	protected :

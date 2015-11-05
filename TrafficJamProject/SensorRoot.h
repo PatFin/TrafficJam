@@ -20,7 +20,7 @@ class SensorRoot
 	//--------------------------------------------------------------------PUBLIC
 	public : 
 	//--------------------------------------------------------Méthodes publiques
-	int GetSensor(long int id, Sensor ** sensor);
+	int GetSensor(long int id, Sensor ** sensor) const;
 	// Usage:
 	//	Allows the user to get the pointer on a sensor in the tree whose id
 	//	matches that of the one given as parameter. The adress is stored in the
@@ -29,6 +29,10 @@ class SensorRoot
 	// Contract:
 	//	The pointer sensor given as parameter should not point towards an
 	//	existing Sensor. Otherwise, using this method might result in memory leak.
+
+	SensorLeaf* GetRoot()const ;
+
+	int GetNbSensors() const;
 
 	void InsertSensorValue (long int idSensor,unsigned int year,unsigned int month,
 			unsigned int day,unsigned int hour, unsigned int minute,

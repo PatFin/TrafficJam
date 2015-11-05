@@ -38,6 +38,16 @@ class SensorLeaf
 	// Contract :
 	//	sensor shouldn't have been initialized. If not the case, using this method
 	//	will result in memory leaks.
+
+	Sensor ** GetAllSensors(Sensor * sensorTable [], SensorLeaf * leaf);
+	// Usage:
+	//	Allows for the gathering of all the Sensors adresses in a table.
+	//	The first argument should be a pointer on a table of size the number of
+	//	elements in the tree. The second should be the root leaf of the tree.
+	// Contract:
+	//	To work properly, this method needs to be applied to the root element of
+	//	the tree.
+
 	void Display();
 	// Usage:
 	//	Displays the tree.
@@ -96,15 +106,6 @@ class SensorLeaf
 	//	that the tree is a HEAP again.
 	// Contract:
 	//	No contract.
-
-	Sensor ** getAllSensors(Sensor * sensorTable [], SensorLeaf * leaf);
-	// Usage:
-	//	Allows for the gathering of all the Sensors adresses in a table.
-	//	The first argument should be a pointer on a table of size the number of
-	//	elements in the tree. The second should be the root leaf of the tree.
-	// Contract:
-	//	To work properly, this method needs to ba applied to the root element of
-	//	the tree.
 
 	Sensor ** refillTree(Sensor ** sensorTable, SensorLeaf * leaf);
 	// Usage;

@@ -41,6 +41,12 @@ public:
 	// Contrat :
 	//
 
+	unsigned long int* GetTrafficNumbers();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
     void AddEvent(unsigned int year, unsigned int month, unsigned int day,
     			  unsigned int hour, unsigned int minute, unsigned int d7,
 				  unsigned int trafficState);

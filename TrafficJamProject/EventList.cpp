@@ -61,6 +61,8 @@ void EventList::AddEvent(Event* aEvent)
 		break;
 	}
 
+	nbEvents++;
+
 } //----- Fin de Méthode
 
 void EventList::DisplayList() const
@@ -107,21 +109,7 @@ unsigned long int EventList::GetNbEvents() const
 // Algorithme :
 //
 {
-	Event* cursor = root;
-
-	unsigned long int nb = 0;
-
-	while (cursor != NULL)
-	{
-		if (cursor != root)
-		{
-			nb++;
-		}
-
-		cursor = cursor->GetNext();
-	}
-
-	return nb;
+	return nbEvents;
 } //----- Fin de Méthode
 
 unsigned long int* EventList::GetTrafficNumbers()
@@ -150,6 +138,7 @@ EventList::EventList ( const EventList & aEventList )
 #endif
 
     root = aEventList.GetRoot();
+    nbEvents = 0;
 
 } //----- Fin de EventList (constructeur de copie)
 
@@ -170,6 +159,8 @@ EventList::EventList ()
     {
     	trafficNumbers[i] = 0;
     }
+
+    nbEvents = 0;
 } //----- Fin de EventList
 
 

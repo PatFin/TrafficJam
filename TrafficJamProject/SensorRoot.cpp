@@ -13,11 +13,30 @@ using namespace std;
 //------------------------------------------------------------------------PUBLIC
 
 //------------------------------------------------------------Méthodes publiques
-int SensorRoot::GetSensor(long int id, Sensor ** sensor)
+int SensorRoot::GetSensor(long int id, Sensor ** sensor) const
+// Usage:
+//	Allows for the gathering of all the Sensors adresses in a table.
+//	The first argument should be a pointer on a table of size the number of
+//	elements in the tree. The second should be the root leaf of the tree.
+// Contract:
+//	To work properly, this method needs to be applied to the root element of
+//	the tree.
 // Algorithm:
 //	See method GetSensor in SensorLEaf.
 {
 	return root->GetSensor(id, sensor);
+}
+
+SensorLeaf* SensorRoot::GetRoot() const
+{
+	return root;
+}
+
+int SensorRoot::GetNbSensors() const
+// Algorithm:
+//
+{
+	return nbElements;
 }
 
 void SensorRoot::InsertSensorValue (long int idSensor,unsigned int year,

@@ -49,14 +49,14 @@ class City
 	//	No contract.
 	//----------------------------------------------------Surcharge d'opérateurs
 	//-----------------------------------------------Constructeurs - Destructeur
-	City ();
+	City();
 	// Mode d'emploi :
 	//	This constructor allows the user to create a new city with an empty tree
 	//	of Sensors.
 	// Contrat :
 	//	No contract.
 	
-	virtual ~City ();
+	//virtual ~City ();
 	// Mode d'emploi :
 	//	This desstructor allows the user to clear the object previously created.
 	// Contrat :

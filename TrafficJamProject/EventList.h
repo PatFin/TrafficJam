@@ -113,6 +113,7 @@ private:
 //------------------------------------------------------- Attributs privés
 
     Event* root;
+    unsigned long int nbEvents;
     unsigned long int trafficNumbers[4];
 
 //---------------------------------------------------------- Classes amies

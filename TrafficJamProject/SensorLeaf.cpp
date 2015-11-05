@@ -181,7 +181,7 @@ void SensorLeaf::sortTree()
 //	The Tree sensors are then reassigned starting from the moved Sensor place..
 {
 	Sensor * sensor [*nbLeaves];
-	getAllSensors(sensor, this);
+	GetAllSensors(sensor, this);
 
 	cout << "Tableau avant tri" << endl;
 	int a;
@@ -232,7 +232,7 @@ Sensor ** SensorLeaf::refillTree(Sensor ** sensorTable, SensorLeaf* leaf)
 	return sensorTable;
 }
 
-Sensor ** SensorLeaf::getAllSensors(Sensor * sensorTable [], SensorLeaf * leaf)
+Sensor ** SensorLeaf::GetAllSensors(Sensor * sensorTable [], SensorLeaf * leaf)
 // Algorithm:
 //	We go through the whole tree going to the left elements first in a
 //	recursive process. We gather all the pointers of all the Sensors contained.
@@ -242,11 +242,11 @@ Sensor ** SensorLeaf::getAllSensors(Sensor * sensorTable [], SensorLeaf * leaf)
 
 	if (leaf->hasLeftChild())
 	{
-		sensorTable = getAllSensors(sensorTable, leaf->childLeft);
+		sensorTable = GetAllSensors(sensorTable, leaf->childLeft);
 	}
 	if (leaf->hasRightChild())
 	{
-		sensorTable = getAllSensors(sensorTable, leaf->childRight);
+		sensorTable = GetAllSensors(sensorTable, leaf->childRight);
 	}
 
 	return sensorTable;

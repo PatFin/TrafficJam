@@ -50,7 +50,7 @@ unsigned long int* Sensor::GetTrafficNumbers()
 
 void Sensor::AddEvent(unsigned int year, unsigned int month, unsigned int day,
     			  unsigned int hour, unsigned int minute, unsigned int d7,
-				  unsigned int state)
+				  char state)
 // Algorithme :
 //
 	{

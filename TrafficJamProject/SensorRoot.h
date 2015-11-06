@@ -36,7 +36,7 @@ class SensorRoot
 
 	void InsertSensorValue (long int idSensor,unsigned int year,unsigned int month,
 			unsigned int day,unsigned int hour, unsigned int minute,
-			unsigned int dayWeek, unsigned int traffic);
+			unsigned int dayWeek, char traffic);
 	// Usage:
 	// 	Allows to add a new Event into the tree.
 	// Contract:

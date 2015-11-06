@@ -19,7 +19,6 @@ int main()
 
 	while (cin >> str && str.compare("EXIT")!=0)
 	{
-		cout << str << endl;
 
 		if (str.compare("ADD") == 0)
 		{
@@ -71,6 +70,7 @@ int main()
 			ss >> traffic;
 
 			lyon.InsertSensorValue(idSensor, year, month, day, hour, minute, dayWeek, traffic);
+			cout << idSensor << " " << year << " " <<  month << " " <<  day << " " <<  hour << " " <<  minute << " " <<  dayWeek << " " <<  traffic << endl;
 		}
 
 	}

@@ -41,7 +41,7 @@ int SensorRoot::GetNbSensors() const
 
 void SensorRoot::InsertSensorValue (long int idSensor,unsigned int year,
 		unsigned int month,	unsigned int day,unsigned int hour,
-		unsigned int minute, unsigned int dayWeek, unsigned int traffic)
+		unsigned int minute, unsigned int dayWeek, char traffic)
 // Algorithm:
 //	See method InsertSensorValue in SensorLeaf.
 {

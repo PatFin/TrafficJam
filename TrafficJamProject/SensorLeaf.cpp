@@ -15,7 +15,7 @@ using namespace std;
 //------------------------------------------------------------Méthodes publiques
 void SensorLeaf::InsertSensorValue (long int idSensor,unsigned int year,
 		unsigned int month,unsigned int day,unsigned int hour,
-		unsigned int minute, unsigned int dayWeek, unsigned int traffic)
+		unsigned int minute, unsigned int dayWeek, char traffic)
 // Algorithm:
 //	We first look for a sensor in the tree whose id matches that of the one given
 //	as parameter.

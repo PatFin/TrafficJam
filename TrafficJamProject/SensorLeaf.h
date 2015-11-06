@@ -24,7 +24,9 @@ class SensorLeaf
 	//--------------------------------------------------------------------PUBLIC
 	public : 
 	//--------------------------------------------------------Méthodes publiques
-	void InsertSensorValue (long int idSensor,unsigned int year,unsigned int month,unsigned int day,unsigned int hour, unsigned int minute, unsigned int dayWeek, unsigned int traffic);
+	void InsertSensorValue (long int idSensor,unsigned int year,unsigned int month,
+			unsigned int day,unsigned int hour, unsigned int minute,
+			unsigned int dayWeek, char traffic);
 	// Usage:
 	// 	Allows to put a new Event in the tree.
 	// Contract:

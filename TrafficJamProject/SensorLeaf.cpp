@@ -47,9 +47,13 @@ void SensorLeaf::InsertSensorValue (long int idSensor,unsigned int year,
 		*nbLeaves = 1;
 	}
 	sensor->AddEvent(year,month,day,hour, minute, dayWeek, traffic);
+
+	cout << "The event " << year << "/" << month << "/" << day << " " << hour
+		 << "h" << minute << ", day " << dayWeek << " : " << traffic
+		 << " has been added to sensor " << idSensor << "." << endl;
 }
 
-int SensorLeaf::GetSensor(int idSensor, Sensor**result)
+int SensorLeaf::GetSensor(const long int idSensor, Sensor** result)
 {
 	SensorLeaf * leaf;
 	if (getSensorLeaf(idSensor, &leaf) == 0)

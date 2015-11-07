@@ -61,6 +61,8 @@ public:
         // Contrat :
         //
 
+    void DisplayStats() const;
+
 
 //------------------------------------------------- Surcharge d'opérateurs
     Sensor & operator = ( const Sensor & unSensor );

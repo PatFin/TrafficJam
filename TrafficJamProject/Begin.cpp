@@ -17,6 +17,9 @@ int main()
 	string str;
 	City lyon;
 
+	stringstream ss("");
+	stringstream ss2("");
+
 	while (cin >> str && str.compare("EXIT")!=0)
 	{
 
@@ -32,9 +35,9 @@ int main()
 			char traffic;
 
 			cin >> str;
-			stringstream ss(str);
+			ss.str(str);
 			ss >> idSensor;
-
+			ss.clear();
 
 			cin >> str;
 			ss.str(str);
@@ -66,11 +69,29 @@ int main()
 			ss.str(str);
 			ss >> dayWeek;
 			ss.clear();
+
 			cin >> str;
-			ss >> traffic;
+			ss2.str(str);
+			ss2 >> traffic;
+			ss2.clear();
 
 			lyon.InsertSensorValue(idSensor, year, month, day, hour, minute, dayWeek, traffic);
-			cout << idSensor << " " << year << " " <<  month << " " <<  day << " " <<  hour << " " <<  minute << " " <<  dayWeek << " " <<  traffic << endl;
+		}
+
+		else if (str.compare("STATS_C") == 0)
+		{
+			cin >> str;
+			ss.str(str);
+
+			long int idSensor;
+			ss >> idSensor;
+			ss.clear();
+
+			Sensor ** sens;
+
+			lyon.GetRoot()->GetSensor(idSensor, sens);
+
+			(*sens)->DisplayStats();
 		}
 
 	}

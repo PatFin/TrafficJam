@@ -23,6 +23,13 @@ class City
 	//--------------------------------------------------------------------PUBLIC
 	public : 
 	//--------------------------------------------------------Méthodes publiques
+
+	SensorRoot* GetRoot() const;
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
 	void InsertSensorValue (long int idSensor,unsigned int year,unsigned int month,
 			unsigned int day,unsigned int hour, unsigned int minute,
 			unsigned int dayWeek, char traffic);

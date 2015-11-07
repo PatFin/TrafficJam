@@ -101,6 +101,16 @@ float* Sensor::GetAverageTraffic() const
 		return averageTraffic;
 	} //----- Fin de Méthode
 
+void Sensor::DisplayStats() const
+{
+	float* stats = GetAverageTraffic();
+
+	cout << "V " << (int)(*stats) << "%" << endl;
+	cout << "J " << (int)(*stats + 1) << "%" << endl;
+	cout << "R " << (int)(*stats + 2) << "%" << endl;
+	cout << "N " << (int)(*stats + 3) << "%" << endl;
+}
+
 
 //------------------------------------------------- Surcharge d'opérateurs
 //Sensor & Sensor::operator = ( const Sensor & unSensor )

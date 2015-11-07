@@ -5,7 +5,6 @@
 
 //--------------------------------------------------------- Interfaces utilisées
 #include "Sensor.h"
-#include "SensorLeaf.h"
 //------------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------------ Types
@@ -31,7 +30,7 @@ class SensorLeaf
 	// 	Allows to put a new Event in the tree.
 	// Contract:
 	//	No contract.
-	int GetSensor (const int idSensor, Sensor ** result);
+	int GetSensor (const long int idSensor, Sensor ** result);
 	// Usage
 	//	Allows to get a Sensor specified by its id. The pointer sensor given as
 	//	parameter will point towards the Sensor.

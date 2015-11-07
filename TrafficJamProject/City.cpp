@@ -14,6 +14,11 @@ using namespace std;
 
 //------------------------------------------------------------Méthodes publiques
 
+SensorRoot* City::GetRoot() const
+{
+	return sensorTree;
+}
+
 void City::InsertSensorValue(long int idSensor,unsigned int year,unsigned int month,
 		unsigned int day,unsigned int hour, unsigned int minute,
 		unsigned int dayWeek, char traffic)
@@ -53,42 +58,32 @@ void City::JamPerHour(int weekDay)
 
 	unsigned long int events[7][24];
 
-	int i, j, k, l;
+	int i, j, k;
 
-	for (i = 0; i < 7; i++)
-	{
-		for (j = 0; j < 24; j++)
+	for (i = 0; i < 24; i++)
 		{
-			events[i][j] = 0;
+			events[weekDay-1][i] = 0;
 		}
-	}
 
 	for (i = 0; i < nbSensors; i++)
 	{
-		for (j = 0; j < 7; j++)
+		for (j = 0; j < 24; j++)
 		{
-			for (k = 0; k < 24; k++)
+			for (k = 0; k < 60; k++)
 			{
-				for (l = 0; l < 60; l++)
-				{
-					tempNbEvents = (*sensors + i)->GetEvents(j, k, l)->GetNbEvents();
-					events[j][k] += tempNbEvents;
-					nbEvents += tempNbEvents;
-				}
+				tempNbEvents = (*sensors + i)->GetEvents(weekDay-1, j, k)->GetNbEvents();
+				events[weekDay-1][j] += tempNbEvents;
+				nbEvents += tempNbEvents;
 			}
 		}
 	}
 
 	if (nbEvents != 0)
 	{
-		for (i = 0; i < 7; i++)
+		for (i = 0; i < 24; i++)
 		{
-			for (j = 0; j < 24; j++)
-			{
-				events[i][j] = (int)((float)events[i][j] / nbEvents);
-
-				cout << i+1 << " " << j << " " << events[i][j] << "%" << endl;
-			}
+			events[weekDay-1][i] = (int)((float)events[weekDay-1][i] / nbEvents);
+			cout << weekDay << " " << j << " " << events[weekDay-1][i] << "%" << endl;
 		}
 	}
 }

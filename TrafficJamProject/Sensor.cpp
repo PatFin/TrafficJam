@@ -82,7 +82,7 @@ float* Sensor::GetAverageTraffic() const
 // Algorithme :
 //
 	{
-		float* averageTraffic;
+		float averageTraffic[4];
 
 		int i;
 
@@ -105,10 +105,10 @@ void Sensor::DisplayStats() const
 {
 	float* stats = GetAverageTraffic();
 
-	cout << "V " << (int)(*stats) << "%" << endl;
-	cout << "J " << (int)(*stats + 1) << "%" << endl;
-	cout << "R " << (int)(*stats + 2) << "%" << endl;
-	cout << "N " << (int)(*stats + 3) << "%" << endl;
+	cout << "V " << (int)((*stats)*100) << "%" << endl;
+	cout << "J " << (int)((*(stats + 1))*100) << "%" << endl;
+	cout << "R " << (int)((*(stats + 2))*100) << "%" << endl;
+	cout << "N " << (int)((*(stats + 3))*100) << "%" << endl;
 }
 
 

@@ -57,11 +57,18 @@ void SensorRoot::Display()
 //---------------------------------------------------Constructeurs - Destructeur
 SensorRoot::SensorRoot()
 {
+#ifdef MAP
+	cout << "Construction SensorRoot" << endl;
+#endif
 	root = new SensorLeaf(&nbElements, &nextParent, &lastElement);
 }
 
 SensorRoot::~SensorRoot()
 {
+
+#ifdef MAP
+	cout << "Destruction SensorRoot" << endl;
+#endif
 	delete(root); //The nextParent and lastElement are in the tree hence they will
 				//be deleted as well.
 }

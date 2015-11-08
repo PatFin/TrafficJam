@@ -82,7 +82,7 @@ float* Sensor::GetAverageTraffic() const
 // Algorithme :
 //
 	{
-		float averageTraffic[4];
+		float* averageTraffic = new float [4];
 
 		int i;
 

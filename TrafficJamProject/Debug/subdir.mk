@@ -4,31 +4,31 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../Begin.cpp \
 ../City.cpp \
 ../Event.cpp \
 ../EventList.cpp \
 ../Sensor.cpp \
 ../SensorLeaf.cpp \
-../SensorRoot.cpp \
-../TestAlexandre.cpp 
+../SensorRoot.cpp 
 
 OBJS += \
+./Begin.o \
 ./City.o \
 ./Event.o \
 ./EventList.o \
 ./Sensor.o \
 ./SensorLeaf.o \
-./SensorRoot.o \
-./TestAlexandre.o 
+./SensorRoot.o 
 
 CPP_DEPS += \
+./Begin.d \
 ./City.d \
 ./Event.d \
 ./EventList.d \
 ./Sensor.d \
 ./SensorLeaf.d \
-./SensorRoot.d \
-./TestAlexandre.d 
+./SensorRoot.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

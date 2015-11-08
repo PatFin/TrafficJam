@@ -30,10 +30,10 @@ class SensorLeaf
 	// 	Allows to put a new Event in the tree.
 	// Contract:
 	//	No contract.
-	int GetSensor (const long int idSensor, Sensor ** result);
+	int GetSensor (const long int idSensor, Sensor*& result);
 	// Usage
-	//	Allows to get a Sensor specified by its id. The pointer sensor given as
-	//	parameter will point towards the Sensor.
+	//	Allows to get a Sensor specified by its id. The pointer on sensor given as
+	//	parameter by reference will point towards the Sensor.
 	//	The method will return 0 if the Sensor whose id is idSensor was found,
 	//	1 otherwise. Beware of segmentation faults in this case.
 	// Contract :
@@ -48,6 +48,7 @@ class SensorLeaf
 	// Contract:
 	//	To work properly, this method needs to be applied to the root element of
 	//	the tree.
+
 
 	void Display();
 	// Usage:

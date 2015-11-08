@@ -29,11 +29,11 @@ void City::InsertSensorValue(long int idSensor,unsigned int year,unsigned int mo
 
 void City::SensorStats(int idSensor)
 {
-	Sensor** sens;
+	Sensor* sens;
 
 	sensorTree->GetSensor(idSensor, sens);
 
-	float* stats = (*sens)->GetAverageTraffic();
+	float* stats = sens->GetAverageTraffic();
 
 	int i;
 
@@ -50,7 +50,8 @@ void City::SensorStats(int idSensor)
 
 void City::JamPerHour(int weekDay)
 {
-	Sensor** sensors = sensorTree->GetRoot()->GetAllSensors(sensors, sensorTree->GetRoot());
+	Sensor** sensors;
+	sensorTree->GetRoot()->GetAllSensors(sensors, sensorTree->GetRoot());
 
 	int nbSensors = sensorTree->GetNbSensors();
 	unsigned long int nbEvents = 0;

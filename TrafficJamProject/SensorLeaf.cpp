@@ -27,7 +27,7 @@ void SensorLeaf::InsertSensorValue (long int idSensor,unsigned int year,
 	if (*nbLeaves > 0)
 	{
 		//If the sensor is not found we create it and add it to the tree.
-		if (GetSensor(idSensor, &sensor) == 1)
+		if (GetSensor(idSensor, sensor) == 1)
 		{
 
 			sensor = insertSensor(idSensor);
@@ -53,12 +53,12 @@ void SensorLeaf::InsertSensorValue (long int idSensor,unsigned int year,
 		 << " has been added to sensor " << idSensor << "." << endl;
 }
 
-int SensorLeaf::GetSensor(const long int idSensor, Sensor** result)
+int SensorLeaf::GetSensor(const long int idSensor, Sensor*& result)
 {
 	SensorLeaf * leaf;
 	if (getSensorLeaf(idSensor, &leaf) == 0)
 	{
-		*result = leaf->sensor;
+		result = leaf->sensor;
 		return 0;
 	}
 	else
@@ -85,6 +85,7 @@ void SensorLeaf::Display()
 SensorLeaf::SensorLeaf(int * numberLeaves, SensorLeaf ** aParent,
 		SensorLeaf ** alastLeaf)
 {
+	sensor = NULL;
 	parent = this;
 	left = this;
 	right = this;

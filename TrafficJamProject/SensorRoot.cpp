@@ -13,7 +13,7 @@ using namespace std;
 //------------------------------------------------------------------------PUBLIC
 
 //------------------------------------------------------------Méthodes publiques
-int SensorRoot::GetSensor(long int id, Sensor ** sensor) const
+int SensorRoot::GetSensor(long int id, Sensor*& sensor) const
 // Usage:
 //	Allows for the gathering of all the Sensors adresses in a table.
 //	The first argument should be a pointer on a table of size the number of

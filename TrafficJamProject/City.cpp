@@ -31,21 +31,25 @@ void City::SensorStats(int idSensor)
 {
 	Sensor* sens;
 
-	sensorTree->GetSensor(idSensor, sens);
+	int res = sensorTree->GetSensor(idSensor, sens);
 
-	float* stats = sens->GetAverageTraffic();
-
-	int i;
-
-	for (i = 0; i < 4; i++)
+	if (res == 0)
 	{
-		*(stats + i) = (int)*(stats + i);
+		float* stats = sens->GetAverageTraffic();
+
+		cout << "V " << (int)(*stats * 100) << "%" << endl;
+		cout << "J " << (int)(*(stats + 1) * 100) << "%" << endl;
+		cout << "R " << (int)(*(stats + 2) * 100) << "%" << endl;
+		cout << "N " << (int)(*(stats + 3) * 100) << "%" << endl;
 	}
 
-	cout << "V " << *stats << endl;
-	cout << "J " << *(stats + 1) << endl;
-	cout << "R " << *(stats + 2) << endl;
-	cout << "N " << *(stats + 3) << endl;
+	else
+	{
+		cout << "V 0%" << endl;
+		cout << "J 0%" << endl;
+		cout << "R 0%" << endl;
+		cout << "N 0%" << endl;
+	}
 }
 
 void City::JamPerHour(int weekDay)

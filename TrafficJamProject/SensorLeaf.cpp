@@ -137,6 +137,10 @@ SensorLeaf::SensorLeaf (Sensor * const aSensor, SensorLeaf * aLeft, SensorLeaf *
 
 SensorLeaf::~SensorLeaf()
 {
+
+#ifdef MAP
+	cout << "Destructor from SensorLeaf" << endl;
+#endif
 	if (hasLeftChild())
 	{
 		delete(childLeft);

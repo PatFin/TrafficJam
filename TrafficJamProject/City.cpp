@@ -94,11 +94,17 @@ void City::JamPerHour(int weekDay)
 
 City::City()
 {
+#ifdef MAP
+	cout << "Constructor from City" << endl;
+#endif
 	sensorTree = new SensorRoot();
 }
 
 City::~City ()
 {
+#ifdef MAP
+	cout << "Destructor from City" << endl;
+#endif
 	delete(sensorTree);
 }
 

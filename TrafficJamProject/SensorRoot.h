@@ -12,7 +12,9 @@
 
 //------------------------------------------------------------------------------
 // Role of class SensorRoot
-// TODO
+//	This class allows for the manipulation of a Tree containing sensors. Events
+//	can be added, the creation of the corresponding Sensor will be handled if
+//	necessary.
 //------------------------------------------------------------------------------
 
 class SensorRoot
@@ -22,13 +24,13 @@ class SensorRoot
 	//--------------------------------------------------------Méthodes publiques
 	int GetSensor(long int id, Sensor*& sensor) const;
 	// Usage:
-	//	Allows the user to get the pointer on a sensor in the tree whose id
-	//	matches that of the one given as parameter. The adress is stored in the
-	//	pointer given as second parameter.
+	//	Allows the user to recursively look for a Sensor in the tree whose id
+	//	matches that of the one given as first parameter. The address is stored
+	//	in the pointer given as second parameter.
 	//	The method will return 0 if the Sensor was found, 1 otherwise.
 	// Contract:
 	//	The pointer sensor given as parameter should not point towards an
-	//	existing Sensor. Otherwise, using this method might result in memory leak.
+	//	existing Sensor. Otherwise using this method might result in memory leak.
 
 	SensorLeaf* GetRoot()const ;
 
@@ -48,28 +50,40 @@ class SensorRoot
 	//----------------------------------------------------Surcharge d'opérateurs
 	//-----------------------------------------------Constructeurs - Destructeur
 	SensorRoot ();
+	// Usage:
+	//	Constructor.
+	// Contract:
+	//	No contract.
 	
 	virtual ~SensorRoot();
+	// Usage:
+	//	Destrutor.
+	// Constract:
+	//	No contract.
 	//---------------------------------------------------------------------PRIVE
 	protected :
 	//--------------------------------------------------------Méthodes protégées
 	//--------------------------------------------------------Attributs protégés
+
+	SensorLeaf * root;
 	/**
 	 * The first leaf of the tree, the root.
-	 */
-	SensorLeaf * root;
+	*/
+
+	SensorLeaf * nextParent;
 	/**
 	 * The parent of the next Sensor if it is created.
 	 */
-	SensorLeaf * nextParent;
+
+	SensorLeaf * lastElement;
 	/**
 	 * The last SensorLeaf inserted into the tree.
 	 */
-	SensorLeaf * lastElement;
+
+	int nbElements;
 	/*
 	 * The number of elements inside the tree.
 	 */
-	int nbElements;
 };
 
 //----------------------------------Autres définitions dépendantes de SensorRoot

@@ -48,6 +48,32 @@ unsigned long int* Sensor::GetTrafficNumbers()
 		return trafficNumbers;
 	} //----- Fin de Méthode
 
+unsigned long int Sensor::GetNbEvents()
+// Algorithme :
+//
+	{
+		return nbOfEvents;
+	} //----- Fin de Méthode
+
+unsigned long int Sensor::GetNbEventsDay(int weekDay) const
+// Algorithme :
+//
+{
+	unsigned long int nbOfEvents = 0;
+
+	int i, j;
+
+	for (i = 0; i < 24; i++)
+	{
+		for (j = 0; j < 60; j++)
+		{
+			nbOfEvents += events[weekDay - 1][i][j]->GetNbEvents();
+		}
+	}
+
+	return nbOfEvents;
+} //----- Fin de Méthode
+
 void Sensor::AddEvent(unsigned int year, unsigned int month, unsigned int day,
     			  unsigned int hour, unsigned int minute, unsigned int d7,
 				  char state)
@@ -100,6 +126,37 @@ float* Sensor::GetAverageTraffic() const
 
 		return averageTraffic;
 	} //----- Fin de Méthode
+
+unsigned long int* Sensor::GetNumbersDay(int weekDay) const
+{
+	unsigned long int* numbers = new unsigned long int[4];
+	unsigned long int nbOfEvents = 0;
+
+	unsigned long int* tempNumbers = new unsigned long int[4];
+
+	int i, j, k;
+
+	for (i = 0; i < 4; i++)
+	{
+		*(numbers + i) = 0;
+	}
+
+	for (i = 0; i < 24; i++)
+	{
+		for (j = 0; j < 60; j++)
+		{
+			tempNumbers = events[weekDay - 1][i][j]->GetTrafficNumbers();
+			nbOfEvents += events[weekDay - 1][i][j]->GetNbEvents();
+
+			for (k = 0; k < 4; k++)
+			{
+				*(numbers + k) += *(tempNumbers + k);
+			}
+		}
+	}
+
+	return numbers;
+}
 
 void Sensor::DisplayStats() const
 {

@@ -53,19 +53,13 @@ public:
      // Contrat :
      //
 
-     unsigned long int* GetTrafficNumbers() const;
+     unsigned long int* GetTrafficNumbers();
      // Mode d'emploi :
      //
      // Contrat :
      //
 
      unsigned long int GetNbEvents() const;
-     // Mode d'emploi :
-     //
-     // Contrat :
-     //
-
-     unsigned long int* GetTrafficNumbers();
      // Mode d'emploi :
      //
      // Contrat :

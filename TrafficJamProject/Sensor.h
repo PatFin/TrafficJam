@@ -47,6 +47,18 @@ public:
 	// Contrat :
 	//
 
+	unsigned long int GetNbEvents();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	unsigned long int GetNbEventsDay(int weekDay) const;
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
     void AddEvent(unsigned int year, unsigned int month, unsigned int day,
     			  unsigned int hour, unsigned int minute, unsigned int d7,
 				  char trafficState);
@@ -59,6 +71,12 @@ public:
         // Mode d'emploi :
         //
         // Contrat :
+        //
+
+    unsigned long int* GetNumbersDay(int weekDay) const;
+    	// Mode d'emploi :
+    	//
+    	// Contrat :
         //
 
     void DisplayStats() const;

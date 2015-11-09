@@ -89,9 +89,20 @@ int main()
 
 			Sensor * sens;
 
-			lyon.GetRoot()->GetSensor(idSensor, sens);
+			lyon.SensorStats(idSensor);
+		}
 
-			sens->DisplayStats();
+		else if (str.compare("STATS_D7") == 0)
+		{
+			cin >> str;
+			ss.str(str);
+
+			int weekDay;
+
+			ss >> weekDay;
+			ss.clear();
+
+			lyon.JamStatsPerWeekDay(weekDay);
 		}
 
 	}

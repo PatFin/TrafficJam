@@ -102,7 +102,17 @@ Event::~Event ( )
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Event>" << endl;
+
 #endif
+
+    if (next != NULL)
+    {
+	#ifdef MAP
+    	cout << "delete du next" << endl;
+	#endif
+
+    	delete next;
+    }
 } //----- Fin de ~Event
 
 

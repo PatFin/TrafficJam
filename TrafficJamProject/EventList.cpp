@@ -152,6 +152,7 @@ EventList::EventList ()
 #endif
 
     root = new Event();
+    trafficNumbers = new unsigned long int[4];
 
     int i;
 
@@ -171,6 +172,9 @@ EventList::~EventList ( )
 #ifdef MAP
     cout << "Appel au destructeur de <EventList>" << endl;
 #endif
+
+    delete root;
+    delete trafficNumbers;
 } //----- Fin de ~EventList
 
 

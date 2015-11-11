@@ -132,7 +132,7 @@ unsigned long int* Sensor::GetNumbersDay(int weekDay) const
 	unsigned long int* numbers = new unsigned long int[4];
 	unsigned long int nbOfEvents = 0;
 
-	unsigned long int* tempNumbers = new unsigned long int[4];
+	unsigned long int* tempNumbers;
 
 	int i, j, k;
 
@@ -197,6 +197,7 @@ Sensor::Sensor ()
 	#endif
 
     id = 0;
+    trafficNumbers = new unsigned long int[4];
 
     int i, j, k;
 
@@ -228,6 +229,7 @@ Sensor::Sensor (long int aId)
 	#endif
 
     id = aId;
+    trafficNumbers = new unsigned long int[4];
 
     int i, j, k;
 
@@ -258,6 +260,22 @@ Sensor::~Sensor ( )
 #ifdef MAP
     cout << "Appel au destructeur de <Sensor>" << endl;
 #endif
+
+    int i, j, k;
+
+    for (i = 0; i < 7; i++)
+    {
+    	for (j = 0; j < 24; j++)
+    	{
+    		for (k = 0; k < 60; k++)
+    		{
+    			delete events[i][j][k];
+    		}
+    	}
+    }
+
+    delete[] events;
+    delete trafficNumbers;
 } //----- Fin de ~Sensor
 
 

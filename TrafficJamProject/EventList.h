@@ -108,7 +108,7 @@ private:
 
     Event* root;
     unsigned long int nbEvents;
-    unsigned long int trafficNumbers[4];
+    unsigned long int* trafficNumbers;
 
 //---------------------------------------------------------- Classes amies
 

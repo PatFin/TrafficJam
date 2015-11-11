@@ -95,15 +95,25 @@ void City::JamPerHour(int weekDay)
 void City::JamStatsPerWeekDay(int weekDay)
 {
 	int nbSensors = sensorTree->GetNbSensors();
-	Sensor* sensors = new Sensor[nbSensors];
+	Sensor* sensors;
 	sensorTree->GetRoot()->GetAllSensors(&sensors, sensorTree->GetRoot());
 
-	unsigned long int stats[4] = {0, 0, 0, 0};
+	unsigned long int* stats = new unsigned long int[4];
 	unsigned long int nbEvents = 0;
 
-	unsigned long int* tempNumbers = new unsigned long int[4];
+	unsigned long int* tempNumbers;
 
 	int i, j;
+
+	for (i = 0; i < nbSensors; i++)
+	{
+		cout << *(sensors + i) << endl;
+	}
+
+	for (i = 0; i < 4; i++)
+	{
+		stats[i] = 0;
+	}
 
 	for (i = 0; i < nbSensors; i++)
 	{
@@ -112,16 +122,16 @@ void City::JamStatsPerWeekDay(int weekDay)
 
 		for (j = 0; j < 4; j++)
 		{
-			stats[i] += *(tempNumbers + i);
+			stats[j] += *(tempNumbers + j);
 		}
 	}
 
 	if (nbEvents != 0)
 	{
-		cout << "V " << (int)((float)(*stats * 100) / nbEvents) << "%" << endl;
-		cout << "J " << (int)((float)(*(stats + 1) * 100) / nbEvents) << "%" << endl;
-		cout << "R " << (int)((float)(*(stats + 2) * 100) / nbEvents) << "%" << endl;
-		cout << "N " << (int)((float)(*(stats + 3) * 100) / nbEvents) << "%" << endl;
+		cout << "V " << (int)((float)(*stats) / nbEvents * 100) << "%" << endl;
+		cout << "J " << (int)((float)(*(stats + 1)) / nbEvents * 100) << "%" << endl;
+		cout << "R " << (int)((float)(*(stats + 2)) / nbEvents * 100) << "%" << endl;
+		cout << "N " << (int)((float)(*(stats + 3)) / nbEvents * 100) << "%" << endl;
 	}
 
 	else

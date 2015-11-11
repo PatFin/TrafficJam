@@ -153,7 +153,8 @@ SensorLeaf::~SensorLeaf()
 		delete(childRight);
 	}
 
-
+	delete sensor;
+	delete nbLeaves;
 }
 
 //---------------------------------------------------------------------PROTECTED

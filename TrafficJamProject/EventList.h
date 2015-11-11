@@ -31,12 +31,14 @@ public:
 //----------------------------------------------------- Méthodes publiques
      void AddEvent(Event* aEvent);
     // Mode d'emploi :
+    //	This method will insert an event at the root of the list.
     //
     // Contrat :
-    //
+    //	Give a valid event (non null, and properly initialized) as a parameter.
 
      void DisplayList() const;
      // Mode d'emploi :
+     //	This method will display the EventList
      //
      // Contrat :
      //

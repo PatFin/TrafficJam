@@ -41,6 +41,8 @@ void City::SensorStats(int idSensor)
 		cout << "J " << (int)(*(stats + 1) * 100) << "%" << endl;
 		cout << "R " << (int)(*(stats + 2) * 100) << "%" << endl;
 		cout << "N " << (int)(*(stats + 3) * 100) << "%" << endl;
+
+		delete[] stats;
 	}
 
 	else
@@ -173,6 +175,8 @@ void City::JamStatsPerWeekDay(int weekDay)
 		{
 			stats[j] += *(tempNumbers + j);
 		}
+
+		delete[] tempNumbers;
 	}
 
 	if (nbEvents != 0)
@@ -190,7 +194,8 @@ void City::JamStatsPerWeekDay(int weekDay)
 		cout << "R 0%" << endl;
 		cout << "N 0%" << endl;
 	}
-	delete [] sensors;
+	delete[] sensors;
+	delete[] stats;
 }
 
 //--------------------------------------------------------Surcharge d'opérateurs

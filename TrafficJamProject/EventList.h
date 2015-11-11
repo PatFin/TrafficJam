@@ -18,9 +18,10 @@
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <EventList>
+// Role of class <EventList>
 //
-//
+// The class EventList stores the Event instances as a simply linked list.
+// New events are inserted at head.
 //------------------------------------------------------------------------ 
 using namespace std;
 class EventList
@@ -67,9 +68,10 @@ public:
 
      unsigned long int GetNbEvents() const;
      // Usage:
+     // Returns the number of events listed in the event list.
      //
      // Contract:
-     //
+     // No contract.
 
 //------------------------------------------------- Surcharge d'opérateurs
     EventList & operator = ( const EventList & unEventList );
@@ -88,9 +90,10 @@ public:
 
     EventList ( );
     // Usage:
+    // Creates a default event list, only containing a root.
     //
     // Contract:
-    //
+    // No contract.
 
     virtual ~EventList ( );
     // Usage:

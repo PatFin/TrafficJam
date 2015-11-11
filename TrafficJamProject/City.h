@@ -26,9 +26,10 @@ class City
 
 	SensorRoot* GetRoot() const;
 	// Mode d'emploi :
+	// Returns the root of the sensor tree in the city.
 	//
 	// Contrat :
-	//
+	// No contract.
 
 	void InsertSensorValue (long int idSensor,unsigned int year,unsigned int month,
 			unsigned int day,unsigned int hour, unsigned int minute,
@@ -73,7 +74,8 @@ class City
 	protected :
 	//--------------------------------------------------------Méthodes protégées
 	//--------------------------------------------------------Attributs protégés
-	SensorRoot * sensorTree;
+
+	SensorRoot * sensorTree; // tree gathering all the sensors in the city.
 };
 
 //-----------------------------------------Autres définitions dépendantes de City

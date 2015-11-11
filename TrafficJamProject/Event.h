@@ -85,6 +85,7 @@ public:
     //
     // Contract:
     //	The parameters must be valid (right type and right order).
+    //	aState must be 'V', 'J', 'R' or 'N'.
 
     virtual ~Event ( );
     // Usage:

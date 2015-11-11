@@ -116,7 +116,9 @@ private:
 //------------------------------------------------------- Attributs privés
 
     Event* root; // root of the list, it is not the first event.
+
     unsigned long int nbEvents; // number of events in the list
+
     unsigned long int trafficNumbers[4]; /* each slot of the array contains
      	 	 	 	 	 	 	 	 	 	the number of events having one of
      	 	 	 	 	 	 	 	 	 	the 4 different states */

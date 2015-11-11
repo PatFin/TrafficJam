@@ -18,9 +18,9 @@
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <Sensor>
+// Role of class <Sensor>
 //
-//
+// A sensor gathers all the events
 //------------------------------------------------------------------------ 
 using namespace std;
 class Sensor
@@ -30,63 +30,83 @@ class Sensor
 public:
 //----------------------------------------------------- Méthodes publiques
 	long int GetId() const;
-	// Mode d'emploi :
+	// Usage:
+	//	Returns the identificator of the Sensor.
 	//
-	// Contrat :
-	//
+	// Contract:
+	// No contract.
 
 	EventList* GetEvents(unsigned int d, unsigned int h, unsigned int m) const;
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+	// Usage:
+	//	Returns an array containing all the events for a certain day of the week,
+	//	hour, minute.
+	// Contract:
+	//	d must be set between 1 and 7, h between 0 and 23, m between 0 and 59.
+	//	The parameters must be of the right type, and in the right order.
 
 	unsigned long int* GetTrafficNumbers();
-	// Mode d'emploi :
+	// Usage:
+	//	Returns, in an array, the number of events for each traffic state,
+	//	contained in the sensor.
 	//
-	// Contrat :
-	//
+	// Contract:
+	//	No contract.
 
 	unsigned long int GetNbEvents();
-	// Mode d'emploi :
+	// Usage:
+	//	Returns the total number of events of the sensor.
 	//
-	// Contrat :
-	//
+	// Contract:
+	//	No contract.
 
 	unsigned long int GetNbEventsDay(int weekDay) const;
-	// Mode d'emploi :
+	// Usage:
+	//	Returns the number of events for a specific day of the week.
 	//
-	// Contrat :
-	//
+	// Contract:
+	//	weekDay must be set between 1 and 7.
 
     void AddEvent(unsigned int year, unsigned int month, unsigned int day,
     			  unsigned int hour, unsigned int minute, unsigned int d7,
 				  char trafficState);
-    // Mode d'emploi :
+    // Usage:
+    //	Inserts an event at the head of the list.
     //
-    // Contrat :
-    //
+    // Contract:
+    // The parameters must be valid (right type and right order).
+    // d7 must be set between 1 and 7, hour between 0 and 23,
+    // minute between 0 and 59, trafficState must be 'V', 'J', 'R' or 'N'.
 
     float* GetAverageTraffic() const;
-        // Mode d'emploi :
-        //
-        // Contrat :
-        //
+    // Usage:
+    // Returns an array containing the traffic statistics (ie the number of
+    // occurrences of a traffic state, over the total number of events.
+    //
+    // Contract:
+    // No contract.
 
     unsigned long int* GetNumbersDay(int weekDay) const;
-    	// Mode d'emploi :
-    	//
-    	// Contrat :
-        //
+    // Usage:
+    // Returns, in an array, the number of occurrences of each traffic state,
+    // for a given day of the week.
+    //
+    // Contract:
+    //	weekDay must be set between 1 and 7.
 
     void DisplayStats() const;
+    // Usage:
+    // Displays the percentage of apparition of each traffic state, considering
+    // all the events comprised in this sensor.
+    //
+    // Contract:
+    // No contract.
 
 
 //------------------------------------------------- Surcharge d'opérateurs
     Sensor & operator = ( const Sensor & unSensor );
-    // Mode d'emploi :
+    // Usage:
     //
-    // Contrat :
+    // Contract:
     //
 
 
@@ -94,25 +114,27 @@ public:
     Sensor ( const Sensor & unSensor );
     // Mode d'emploi (constructeur de copie) :
     //
-    // Contrat :
+    // Contract:
     //
 
     Sensor ( );
-    // Mode d'emploi :
+    // Usage:
+    // Creates a standard sensor, with identificator 0.
     //
-    // Contrat :
-    //
+    // Contract:
+    // This constructor should not be used more than once.
 
     Sensor (long aId);
-    // Mode d'emploi :
+    // Usage:
+    // Creates a sensor with the identificator specified as a parameter.
     //
-    // Contrat :
-    //
+    // Contract:
+    // The user should not use a same identificator more than once.
 
     virtual ~Sensor ( );
-    // Mode d'emploi :
+    // Usage:
     //
-    // Contrat :
+    // Contract:
     //
 
 //------------------------------------------------------------------ PRIVE 
@@ -129,12 +151,15 @@ protected:
 private:
 //------------------------------------------------------- Attributs privés
 
-    long int id;
+    long int id; // identificator of the sensor
 
-    EventList* events[7][24][60];
+    EventList* events[7][24][60]; /* array containing all the events of the sensor,
+    								 sorted by day of the week, hour, minute. */
 
-    unsigned long int trafficNumbers[4];
-    unsigned long int nbOfEvents;
+    unsigned long int trafficNumbers[4]; /* array containing the number of
+     	 	 	 	 	 	 	 	 	 	occurrences of each traffic state. */
+
+    unsigned long int nbOfEvents; // total number of events for this sensor
 
 //---------------------------------------------------------- Classes amies
 

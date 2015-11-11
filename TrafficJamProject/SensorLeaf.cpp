@@ -80,6 +80,27 @@ void SensorLeaf::Display()
 		childRight->Display();
 	}
 }
+
+
+Sensor ** SensorLeaf::GetAllSensors(Sensor * sensorTable [])
+// Algorithm:
+//	We go through the whole tree going to the left elements first in a
+//	recursive process. We gather all the pointers of all the Sensors contained.
+{
+	*sensorTable = sensor;
+	sensorTable ++;
+
+	if (hasLeftChild())
+	{
+		sensorTable = childLeft->GetAllSensors(sensorTable);
+	}
+	if (hasRightChild())
+	{
+		sensorTable = childRight->GetAllSensors(sensorTable);
+	}
+
+	return sensorTable;
+}
 //--------------------------------------------------------Surcharge d'opérateurs
 //---------------------------------------------------Constructeurs - Destructeur
 SensorLeaf::SensorLeaf(int * numberLeaves, SensorLeaf ** aParent,
@@ -176,27 +197,6 @@ Sensor * SensorLeaf::insertSensor(long int idSensor)
 }
 
 
-Sensor ** SensorLeaf::GetAllSensors(Sensor * sensorTable [])
-// Algorithm:
-//	We go through the whole tree going to the left elements first in a
-//	recursive process. We gather all the pointers of all the Sensors contained.
-{
-	*sensorTable = sensor;
-	sensorTable ++;
-
-	if (hasLeftChild())
-	{
-		sensorTable = childLeft->GetAllSensors(sensorTable);
-	}
-	if (hasRightChild())
-	{
-		sensorTable = childRight->GetAllSensors(sensorTable);
-	}
-
-	return sensorTable;
-}
-
-
 bool SensorLeaf::hasLeftChild()
 // Algorithm:
 //	By default, upon creation, the children of the leaf point towards itself.
@@ -217,38 +217,37 @@ void SensorLeaf::sortTree()
 //	with the bubble sort algorithm starting from the end of the table is enough
 //	The Tree sensors are then reassigned starting from the moved Sensor place..
 {
-	Sensor * sensor [*nbLeaves];
-	GetAllSensors(sensor);
-
+	Sensor* sensorArray [*nbLeaves];
+	GetAllSensors(sensorArray);
+#ifdef MAP
 	cout << "Tableau avant tri" << endl;
 	int a;
 	for (a= 0;a<*nbLeaves; a++)
 	{
-		cout << sensor[a]->GetId()<< endl;
+		cout << sensorArray[a]->GetId()<< endl;
 	}
-
+#endif
 	//Bubble sort starting from the end.
 	int index = *nbLeaves -1;
 	while (index > 0)
 	{
-		if (sensor[index -1]->GetId() < sensor[index]->GetId())
+		if (sensorArray[index -1]->GetId() < sensorArray[index]->GetId())
 		{
-			Sensor * buff = sensor[index];
-			sensor[index] = sensor[index -1];
-			sensor[index-1] = buff;
+			Sensor * buff = sensorArray[index];
+			sensorArray[index] = sensorArray[index -1];
+			sensorArray[index-1] = buff;
 		}
 		index --;
 	}
-
+#ifdef MAP
 	cout << "Tableau après tri" << endl;
 	for (a= 0;a<*nbLeaves; a++)
 	{
 		cout << sensor[a]->GetId()<< endl;
 	}
+#endif
 
-
-	refillTree(sensor, this);
-	delete [] sensor;
+	refillTree(sensorArray, this);
 }
 
 Sensor ** SensorLeaf::refillTree(Sensor ** sensorTable, SensorLeaf* leaf)

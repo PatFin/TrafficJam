@@ -163,6 +163,7 @@ void TestEventList()
 
 	cout << "There are " << list->GetNbEvents() << " events in this list." << endl;
 
+	delete[] numbers;
 	delete list;
 }
 
@@ -203,6 +204,44 @@ void TestSensor()
 	cout << "Display of the sensor :" << endl;
 
 	cout << *sens << endl;
+
+	cout << "Display of the list of events in day of the week 5, at 15:10 :" << endl;
+
+	cout << *(sens->GetEvents(5, 15, 10)) << endl;
+
+	cout << "Display of the list of events in day of the week 5, at 15:11 :" << endl;
+
+	cout << *(sens->GetEvents(5, 15, 11)) << endl;
+
+	cout << "Display of the traffic numbers of this sensor : " << endl;
+
+	unsigned long int* numbers = sens->GetTrafficNumbers();
+
+	cout << "V : " << *numbers << endl;
+	cout << "J : " << *(numbers + 1) << endl;
+	cout << "R : " << *(numbers + 2) << endl;
+	cout << "N : " << *(numbers + 3) << endl;
+
+	cout << "Checking that there are 2 events in this sensor :" << endl;
+
+	cout << "There are " << sens->GetNbEvents() << " events in this sensor." << endl;
+
+	cout << "Display of the traffic numbers in this sensor for day 2 :" << endl;
+
+	numbers = sens->GetNumbersDay(2);
+
+	cout << "V : " << *numbers << endl;
+	cout << "J : " << *(numbers + 1) << endl;
+	cout << "R : " << *(numbers + 2) << endl;
+	cout << "N : " << *(numbers + 3) << endl;
+
+	cout << "Checking that there is only one event in this sensor for day 2 :" << endl;
+
+	cout << "There are " << sens->GetNbEventsDay(2) << " events for day 2." << endl;
+
+	cout << "Display of the statistics for this sensor :" << endl;
+
+	sens->DisplayStats();
 
 	delete sens;
 }

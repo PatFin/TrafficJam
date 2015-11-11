@@ -87,8 +87,6 @@ int main()
 			ss >> idSensor;
 			ss.clear();
 
-			Sensor * sens;
-
 			lyon.SensorStats(idSensor);
 		}
 

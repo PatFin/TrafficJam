@@ -28,55 +28,68 @@ class Event
 public:
 //----------------------------------------------------- Méthodes publiques
     Event* GetNext();
-    // Mode d'emploi :
+    // Usage:
+    //	Returns the next element.
+    //	If the selected element is the latest of the EventList, the method will
+    //	return the same element
     //
-    // Contrat :
-    //
+    // Contract:
+    //	No contract.
 
     char GetState();
-        // Mode d'emploi :
-        //
-        // Contrat :
-        //
+    // Usage:
+    //	Returns the traffic state of the event.
+    //
+    // Contract:
+    //	No contract.
 
     void SetNext(Event * event);
-    // Mode d'emploi :
+    // Usage:
+    //	Sets the next of the considered element with the one given as a
+    //	parameter.
     //
-    // Contrat :
-    //
+    // Contract:
+    //	The event given as a parameter must be valid.
 
     bool HasNext();
-    // Mode d'emploi :
+    // Usage:
+    //	Returns true if the element has a next (other than itslef), false
+    //	otherwise.
     //
-    // Contrat :
-    //
+    // Contract:
+    //	No contract.
 //------------------------------------------------- Surcharge d'opérateurs
 
 
 //-------------------------------------------- Constructeurs - destructeur
     Event ( const Event & unEvent );
-    // Mode d'emploi (constructeur de copie) :
+    // Usage(copy constructor):
     //
-    // Contrat :
+    // Contract:
     //
 
     Event ();
-    // Mode d'emploi :
+    // Usage:
+    //	Default event constructor. Sets the next to the element itself.
+    //	Sets 'V' to the traffic state of the event, 0 to all the other attributes.
     //
-    // Contrat :
-    //
+    // Contract:
+    //	No contract.
 
     Event (unsigned int aYear, unsigned int aMonth, unsigned int aDay,
     			  char aState);
-    // Mode d'emploi :
+    // Usage:
+    //	This constructor will set the attributes of the event with those given as
+    //	parameters.
+    //	It sets the next of the event to the same event.
     //
-    // Contrat :
-    //
+    // Contract:
+    //	The parameters must be valid (right type and right order).
 
     virtual ~Event ( );
-    // Mode d'emploi :
+    // Usage:
     //
-    // Contrat :
+    // Contract:
     //
 
 //------------------------------------------------------------------ PRIVE 

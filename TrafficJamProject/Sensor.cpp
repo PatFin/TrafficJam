@@ -274,7 +274,7 @@ Sensor::~Sensor ( )
     	}
     }
 
-    delete trafficNumbers;
+    delete[] trafficNumbers;
 } //----- Fin de ~Sensor
 
 

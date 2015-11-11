@@ -31,7 +31,7 @@ void EventList::AddEvent(Event* aEvent)
 // Algorithme :
 //
 {
-	if (root->GetNext() != NULL)
+	if (root->HasNext())
 	{
 		aEvent->SetNext(root->GetNext());
 		root->SetNext(aEvent);
@@ -39,7 +39,7 @@ void EventList::AddEvent(Event* aEvent)
 	else
 	{
 		root->SetNext(aEvent);
-		aEvent->SetNext(NULL);
+		aEvent->SetNext(aEvent);
 	}
 
 	switch (aEvent->GetState())
@@ -71,7 +71,7 @@ void EventList::DisplayList() const
 {
 	Event* cursor = root;
 
-	while (cursor != NULL)
+	while (cursor->HasNext())
 	{
 		if (cursor != root)
 		{
@@ -86,7 +86,7 @@ bool EventList::IsEmpty() const
 // Algorithme :
 //
 {
-	if (root->GetNext() == NULL)
+	if (!root->HasNext())
 	{
 		return true;
 	}
@@ -174,7 +174,7 @@ EventList::~EventList ( )
 #endif
 
     delete root;
-    delete trafficNumbers;
+    delete[] trafficNumbers;
 } //----- Fin de ~EventList
 
 

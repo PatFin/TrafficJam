@@ -44,6 +44,12 @@ public:
     //
     // Contrat :
     //
+
+    bool HasNext();
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
 //------------------------------------------------- Surcharge d'opérateurs
 
 

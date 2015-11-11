@@ -48,6 +48,20 @@ void Event::SetNext(Event * aEvent)
 	next = aEvent;
 }
 
+bool Event::HasNext()
+// Algorithme :
+//
+{
+	if (next == this)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -92,7 +106,7 @@ Event::Event (unsigned int aYear, unsigned int aMonth, unsigned int aDay,
     day = aDay;
     trafficState = aState;
 
-    next = NULL;
+    next = this;
 } //----- Fin de Event
 
 
@@ -105,7 +119,7 @@ Event::~Event ( )
 
 #endif
 
-    if (next != NULL)
+    if (HasNext())
     {
 	#ifdef MAPD
     	cout << "delete du next" << endl;

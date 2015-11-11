@@ -1,12 +1,13 @@
 using namespace std;
 
-#include "SensorRoot.h"
+#include "City.h"
 
 void TestTree();
 void TestTree2();
 
 int main()
 {
+	TestTree();
 	TestTree2();
 	return 0;
 }
@@ -14,25 +15,36 @@ int main()
 void TestTree()
 {
 	Sensor* sens;
-	SensorRoot r;
+	City c;
 
-	r.InsertSensorValue(2, 2015, 10, 30, 21, 33, 1, 'V');
-	r.InsertSensorValue(1, 2015, 10, 26, 21, 33, 1, 'R');
-	r.InsertSensorValue(3, 2015, 10, 27, 21, 33, 1, 'J');
-	r.InsertSensorValue(4, 2015, 10, 26, 21, 33, 1, 'V');
-	r.InsertSensorValue(5, 2015, 10, 26, 21, 33, 1, 'R');
-	r.InsertSensorValue(6, 2015, 10, 27, 21, 33, 1, 'N');
-	r.InsertSensorValue(0, 2015, 10, 15, 02, 33, 2, 'N');
+	SensorRoot * r = c.GetRoot();
+
+	r->InsertSensorValue(2, 2015, 10, 30, 21, 33, 1, 'V');
+	r->InsertSensorValue(1, 2015, 10, 26, 21, 33, 1, 'R');
+	r->InsertSensorValue(3, 2015, 10, 27, 21, 33, 1, 'J');
+	r->InsertSensorValue(4, 2015, 10, 26, 21, 33, 1, 'V');
+	r->InsertSensorValue(5, 2015, 10, 26, 21, 33, 1, 'R');
+	r->InsertSensorValue(6, 2015, 10, 27, 21, 33, 1, 'N');
+	r->InsertSensorValue(0, 2015, 10, 15, 02, 33, 2, 'N');
 
 	cout << "Trouve-t-on les Sensor?" << endl;
-	cout << r.GetSensor(6, sens) << endl;
-	cout << r.GetSensor(5, sens) << endl;
-	cout << r.GetSensor(4, sens) << endl;
-	cout << r.GetSensor(3, sens) << endl;
-	cout << r.GetSensor(2, sens) << endl;
-	cout << r.GetSensor(1, sens) << endl;
-	cout << r.GetSensor(0, sens) << endl;
+	cout << r->GetSensor(6, sens) << endl;
+	cout << *sens << endl;
+	cout << r->GetSensor(5, sens) << endl;
+	cout << *sens << endl;
+	cout << r->GetSensor(4, sens) << endl;
+	cout << *sens << endl;
+	cout << r->GetSensor(3, sens) << endl;
+	cout << *sens << endl;
+	cout << r->GetSensor(2, sens) << endl;
+	cout << *sens << endl;
+	cout << r->GetSensor(1, sens) << endl;
+	cout << *sens << endl;
+	cout << r->GetSensor(0, sens) << endl;
+	cout << *sens << endl;
 
+	cout << "Appel StatsPerWeekDay" << endl;
+	c.JamStatsPerWeekDay(1);
 }
 
 void TestTree2()

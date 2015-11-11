@@ -94,7 +94,7 @@ void City::JamPerHour(int weekDay)
 void City::JamStatsPerWeekDay(int weekDay)
 {
 	int nbSensors = sensorTree->GetNbSensors();
-	Sensor * sensors = *(sensorTree->GetAllSensors());
+	Sensor ** sensors = sensorTree->GetAllSensors();
 
 	unsigned long int* stats = new unsigned long int[4];
 	unsigned long int nbEvents = 0;
@@ -106,7 +106,7 @@ void City::JamStatsPerWeekDay(int weekDay)
 #ifdef MAP
 	for (i = 0; i < nbSensors; i++)
 	{
-		cout << *(sensors + i) << endl;
+		cout << *(sensors[i]) << endl;
 	}
 #endif
 
@@ -117,8 +117,8 @@ void City::JamStatsPerWeekDay(int weekDay)
 
 	for (i = 0; i < nbSensors; i++)
 	{
-		tempNumbers = (sensors + i)->GetNumbersDay(weekDay);
-		nbEvents += (sensors + i)->GetNbEventsDay(weekDay);
+		tempNumbers = sensors[i]->GetNumbersDay(weekDay);
+		nbEvents += sensors[i]->GetNbEventsDay(weekDay);
 
 		for (j = 0; j < 4; j++)
 		{

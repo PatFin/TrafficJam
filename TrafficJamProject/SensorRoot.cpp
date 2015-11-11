@@ -27,6 +27,13 @@ int SensorRoot::GetSensor(long int id, Sensor*& sensor) const
 	return root->GetSensor(id, sensor);
 }
 
+Sensor ** SensorRoot::GetAllSensors()
+{
+	Sensor ** sensors = new Sensor* [nbElements];
+	root->GetAllSensors(sensors);
+	return sensors;
+}
+
 SensorLeaf* SensorRoot::GetRoot() const
 {
 	return root;

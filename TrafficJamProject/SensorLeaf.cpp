@@ -173,6 +173,28 @@ Sensor * SensorLeaf::insertSensor(long int idSensor)
 	return sensor;
 }
 
+
+Sensor ** SensorLeaf::GetAllSensors(Sensor * sensorTable [])
+// Algorithm:
+//	We go through the whole tree going to the left elements first in a
+//	recursive process. We gather all the pointers of all the Sensors contained.
+{
+	*sensorTable = sensor;
+	sensorTable ++;
+
+	if (hasLeftChild())
+	{
+		sensorTable = childLeft->GetAllSensors(sensorTable);
+	}
+	if (hasRightChild())
+	{
+		sensorTable = childRight->GetAllSensors(sensorTable);
+	}
+
+	return sensorTable;
+}
+
+
 bool SensorLeaf::hasLeftChild()
 // Algorithm:
 //	By default, upon creation, the children of the leaf point towards itself.
@@ -194,7 +216,7 @@ void SensorLeaf::sortTree()
 //	The Tree sensors are then reassigned starting from the moved Sensor place..
 {
 	Sensor * sensor [*nbLeaves];
-	GetAllSensors(sensor, this);
+	GetAllSensors(sensor);
 
 	cout << "Tableau avant tri" << endl;
 	int a;
@@ -240,26 +262,6 @@ Sensor ** SensorLeaf::refillTree(Sensor ** sensorTable, SensorLeaf* leaf)
 	if (leaf->hasRightChild())
 	{
 		sensorTable = refillTree(sensorTable, leaf->childRight);
-	}
-
-	return sensorTable;
-}
-
-Sensor ** SensorLeaf::GetAllSensors(Sensor * sensorTable [], SensorLeaf * leaf)
-// Algorithm:
-//	We go through the whole tree going to the left elements first in a
-//	recursive process. We gather all the pointers of all the Sensors contained.
-{
-	*sensorTable = leaf->sensor;
-	sensorTable ++;
-
-	if (leaf->hasLeftChild())
-	{
-		sensorTable = GetAllSensors(sensorTable, leaf->childLeft);
-	}
-	if (leaf->hasRightChild())
-	{
-		sensorTable = GetAllSensors(sensorTable, leaf->childRight);
 	}
 
 	return sensorTable;

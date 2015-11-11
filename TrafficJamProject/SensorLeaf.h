@@ -40,15 +40,14 @@ class SensorLeaf
 	//	sensor shouldn't have been initialized. If not the case, using this method
 	//	will result in memory leaks.
 
-	Sensor ** GetAllSensors(Sensor * sensorTable [], SensorLeaf * leaf);
+	Sensor ** GetAllSensors(Sensor * sensorTable []);
 	// Usage:
-	//	Allows for the gathering of all the Sensors adresses in a table.
-	//	The first argument should be a pointer on a table of size the number of
-	//	elements in the tree. The second should be the root leaf of the tree.
+	//	Allows for the gathering of all the Sensors adress in a table.
+	//	The parameter should be a pointer on a table of size the number of
+	//	elements in the tree.
 	// Contract:
 	//	To work properly, this method needs to be applied to the root element of
 	//	the tree.
-
 
 	void Display();
 	// Usage:
@@ -119,6 +118,7 @@ class SensorLeaf
 	//	Allows to get the leaf containing the Sensor whose id is sensorId.
 	//	If such a leaf is found in the tree, the method returns 0. If not found,
 	//	itwill return 1.
+
 	//--------------------------------------------------------Attributs protégés
 	SensorLeaf * left;
 	SensorLeaf * right;

@@ -54,8 +54,7 @@ void City::SensorStats(int idSensor)
 
 void City::JamPerHour(int weekDay)
 {
-	Sensor** sensors;
-	sensorTree->GetRoot()->GetAllSensors(sensors, sensorTree->GetRoot());
+	Sensor** sensors = sensorTree->GetAllSensors();
 	int nbSensors = sensorTree->GetNbSensors();
 	unsigned long int nbEvents = 0;
 	unsigned long int tempNbEvents;
@@ -95,8 +94,7 @@ void City::JamPerHour(int weekDay)
 void City::JamStatsPerWeekDay(int weekDay)
 {
 	int nbSensors = sensorTree->GetNbSensors();
-	Sensor* sensors;
-	sensorTree->GetRoot()->GetAllSensors(&sensors, sensorTree->GetRoot());
+	Sensor * sensors = *(sensorTree->GetAllSensors());
 
 	unsigned long int* stats = new unsigned long int[4];
 	unsigned long int nbEvents = 0;

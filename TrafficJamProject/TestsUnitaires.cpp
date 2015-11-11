@@ -1,12 +1,13 @@
 using namespace std;
 
-#include "SensorRoot.h"
+#include "City.h"
 
 void TestTree();
+void TestTree2();
 
 int main()
 {
-	TestTree();
+	TestTree2();
 	return 0;
 }
 
@@ -32,6 +33,18 @@ void TestTree()
 	cout << r.GetSensor(1, sens) << endl;
 	cout << r.GetSensor(0, sens) << endl;
 
+}
+
+void TestTree2()
+{
+	City * lyon = new City();
+	lyon->InsertSensorValue(1, 2015, 9, 24, 14, 15, 4, 'V');
+	lyon->InsertSensorValue(2, 2015, 9, 24, 14, 15, 4, 'N');
+
+	Sensor ** sensors = lyon->GetRoot()->GetAllSensors();
+
+	cout << "sensors [0] " << sensors[0]->GetId() << endl;
+	cout << "sensors [1] " << sensors[1]->GetId() << endl;
 }
 
 

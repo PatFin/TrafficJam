@@ -32,6 +32,11 @@ class SensorRoot
 	//	The pointer sensor given as parameter should not point towards an
 	//	existing Sensor. Otherwise using this method might result in memory leak.
 
+	Sensor ** GetAllSensors();
+	// Usage:
+	//	Allows to get all the sensors inside the tree. The sensors will be given
+	//	as an array of pointers of size that of the number of leaves in the tree.
+
 	SensorLeaf* GetRoot()const ;
 
 	int GetNbSensors() const;

@@ -103,10 +103,12 @@ void City::JamStatsPerWeekDay(int weekDay)
 
 	int i, j;
 
+#ifdef MAP
 	for (i = 0; i < nbSensors; i++)
 	{
 		cout << *(sensors + i) << endl;
 	}
+#endif
 
 	for (i = 0; i < 4; i++)
 	{

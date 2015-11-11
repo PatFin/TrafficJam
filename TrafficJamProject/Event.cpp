@@ -66,7 +66,7 @@ Event::Event ()
 // Algorithme :
 //
 {
-#ifdef MAP
+#ifdef MAPD
     cout << "Appel au constructeur par défaut de <Event>" << endl;
 #endif
 
@@ -83,7 +83,7 @@ Event::Event (unsigned int aYear, unsigned int aMonth, unsigned int aDay,
 // Algorithme :
 //
 {
-#ifdef MAP
+#ifdef MAPD
     cout << "Appel au constructeur de <Event>" << endl;
 #endif
 
@@ -100,14 +100,14 @@ Event::~Event ( )
 // Algorithme :
 //
 {
-#ifdef MAP
+#ifdef MAPD
     cout << "Appel au destructeur de <Event>" << endl;
 
 #endif
 
     if (next != NULL)
     {
-	#ifdef MAP
+	#ifdef MAPD
     	cout << "delete du next" << endl;
 	#endif
 

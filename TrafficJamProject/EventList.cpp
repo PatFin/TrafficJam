@@ -133,7 +133,7 @@ EventList::EventList ( const EventList & aEventList )
 // Algorithme :
 //
 {
-#ifdef MAP
+#ifdef MAPD
     cout << "Appel au constructeur de copie de <EventList>" << endl;
 #endif
 
@@ -147,7 +147,7 @@ EventList::EventList ()
 // Algorithme :
 //
 {
-#ifdef MAP
+#ifdef MAPD
     cout << "Appel au constructeur de <EventList>" << endl;
 #endif
 
@@ -169,7 +169,7 @@ EventList::~EventList ( )
 // Algorithme :
 //
 {
-#ifdef MAP
+#ifdef MAPD
     cout << "Appel au destructeur de <EventList>" << endl;
 #endif
 

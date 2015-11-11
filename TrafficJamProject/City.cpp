@@ -56,16 +56,41 @@ void City::JamPerHour(int weekDay)
 {
 	Sensor** sensors = sensorTree->GetAllSensors();
 	int nbSensors = sensorTree->GetNbSensors();
-	unsigned long int nbEvents = 0;
+	unsigned long int* nbEvents = new unsigned long int[24];
 	unsigned long int tempNbEvents;
 
-	unsigned long int events[24];
+	unsigned long int** stats = new unsigned long int*[24];
+	unsigned long int* tempStats;
+	unsigned long int* trafficRN = new unsigned long int[24];
 
-	int i, j, k;
+	int i, j, k, l;
+
+	/*
+	Initialisation du tableau contenant le nombre d'évènements pour chaque heure,
+	suivant leur état.
+	 */
 
 	for (i = 0; i < 24; i++)
 	{
-		events[i] = 0;
+		stats[i] = new unsigned long int[4];
+	}
+
+	for (i = 0; i < 24; i++)
+	{
+		for (j = 0; j < 4; j++)
+		{
+			stats[i][j] = 0;
+		}
+		trafficRN[i] = 0;
+	}
+
+	/*
+	Initialisation du tableau contenant le nombre total d'évènements par heure.
+	 */
+
+	for (i = 0; i < 24; i++)
+	{
+		nbEvents[i] = 0;
 	}
 
 	for (i = 0; i < nbSensors; i++)
@@ -74,21 +99,44 @@ void City::JamPerHour(int weekDay)
 		{
 			for (k = 0; k < 60; k++)
 			{
-				tempNbEvents = (*sensors + i)->GetEvents(weekDay-1, j, k)->GetNbEvents();
-				events[j] += tempNbEvents;
-				nbEvents += tempNbEvents;
+				tempNbEvents = sensors[i]->GetEvents(weekDay, j, k)->GetNbEvents();
+
+				tempStats = sensors[i]->GetEvents(weekDay, j, k)->GetTrafficNumbers();
+
+				nbEvents[j] += tempNbEvents;
+
+				for (l = 0; l < 4; l++)
+				{
+					stats[j][l] += *(tempStats + l);
+				}
 			}
+
+			trafficRN[j] = (stats[j][2] + stats[j][3]);
 		}
 	}
 
-	if (nbEvents != 0)
+	for (i = 0; i < 24; i++)
 	{
-		for (i = 0; i < 24; i++)
+		cout << weekDay << " " << i << " ";
+
+		if (nbEvents[i] != 0)
 		{
-			events[i] = (int)((float)events[i] / nbEvents);
-			cout << weekDay << " " << j << " " << events[i] << "%" << endl;
+			cout << (int)((float)(trafficRN[i]) / nbEvents[i] * 100) << "%" << endl;
+		}
+
+		else
+		{
+			cout << "0%" << endl;
 		}
 	}
+
+	for (i = 0; i < 24; i++)
+		{
+			delete[] stats[i];
+		}
+
+	delete[] stats;
+	delete[] trafficRN;
 }
 
 void City::JamStatsPerWeekDay(int weekDay)

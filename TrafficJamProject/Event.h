@@ -111,7 +111,7 @@ private:
     unsigned int day;
     char trafficState;
 
-    Event *next;
+    Event *next; // next event in the EventList
 
 
 //---------------------------------------------------------- Classes amies

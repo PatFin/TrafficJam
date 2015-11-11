@@ -176,8 +176,8 @@ SensorLeaf::~SensorLeaf()
 	}
 
 	delete sensor;
-	delete nextParent;
-	delete lastElement;
+//	delete nextParent;
+//	delete lastElement;
 }
 
 //---------------------------------------------------------------------PROTECTED

@@ -30,48 +30,52 @@ class EventList
 public:
 //----------------------------------------------------- Méthodes publiques
      void AddEvent(Event* aEvent);
-    // Mode d'emploi :
+    // Usage:
     //	This method will insert an event at the root of the list.
     //
-    // Contrat :
+    // Contract:
     //	Give a valid event (non null, and properly initialized) as a parameter.
 
      void DisplayList() const;
-     // Mode d'emploi :
-     //	This method will display the EventList
+     // Usage:
+     //	This method will display each event in the list (it won't display anything
+     //	if the list is empty.
      //
-     // Contrat :
-     //
+     // Contract:
+     // No contract.
 
      bool IsEmpty() const;
-     // Mode d'emploi :
+     // Usage:
+     //	Returns true if the list is empty, false otherwise.
      //
-     // Contrat :
-     //
+     // Contract:
+     //	No contract.
 
      Event* GetRoot() const;
-     // Mode d'emploi :
+     // Usage:
+     //	Returns the root of the list.
      //
-     // Contrat :
-     //
+     // Contract:
+     //	No contract.
 
      unsigned long int* GetTrafficNumbers();
-     // Mode d'emploi :
+     // Usage:
+     //	Returns the traffic numbers array of the list.
      //
-     // Contrat :
-     //
+     // Contract:
+     //	No contract.
 
      unsigned long int GetNbEvents() const;
-     // Mode d'emploi :
+     // Usage:
      //
-     // Contrat :
+     // Contract:
      //
 
 //------------------------------------------------- Surcharge d'opérateurs
     EventList & operator = ( const EventList & unEventList );
-    // Mode d'emploi :
+    // Usage:
     //
-    // Contrat :
+    // Contract:
     //
 
 
@@ -79,19 +83,19 @@ public:
     EventList ( const EventList & aEventList );
     // Mode d'emploi (constructeur de copie) :
     //
-    // Contrat :
+    // Contract:
     //
 
     EventList ( );
-    // Mode d'emploi :
+    // Usage:
     //
-    // Contrat :
+    // Contract:
     //
 
     virtual ~EventList ( );
-    // Mode d'emploi :
+    // Usage:
     //
-    // Contrat :
+    // Contract:
     //
 
 //------------------------------------------------------------------ PRIVE 
@@ -108,9 +112,11 @@ protected:
 private:
 //------------------------------------------------------- Attributs privés
 
-    Event* root;
-    unsigned long int nbEvents;
-    unsigned long int trafficNumbers[4];
+    Event* root; // root of the list, it is not the first event.
+    unsigned long int nbEvents; // number of events in the list
+    unsigned long int trafficNumbers[4]; /* each slot of the array contains
+     	 	 	 	 	 	 	 	 	 	the number of events having one of
+     	 	 	 	 	 	 	 	 	 	the 4 different states */
 
 //---------------------------------------------------------- Classes amies
 

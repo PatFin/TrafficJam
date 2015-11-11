@@ -105,6 +105,19 @@ int main()
 			lyon.JamStatsPerWeekDay(weekDay);
 		}
 
+		else if (str.compare("JAM_DH") == 0)
+		{
+			cin >> str;
+			ss.str(str);
+
+			int weekDay;
+
+			ss >> weekDay;
+			ss.clear();
+
+			lyon.JamPerHour(weekDay);
+		}
+
 	}
 
 

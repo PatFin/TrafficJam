@@ -12,9 +12,9 @@
 
 //------------------------------------------------------------------------------
 // Role of class SensorRoot
-//	This class allows for the manipulation of a Tree containing sensors. Events
-//	can be added, the creation of the corresponding Sensor will be handled if
-//	necessary.
+//	This class allows for the manipulation of a Tree containing sensors. The goal
+//	is to collect Events. The creation of the corresponding Sensor is handled
+//	automatically.
 //------------------------------------------------------------------------------
 
 class SensorRoot

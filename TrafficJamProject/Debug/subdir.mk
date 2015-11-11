@@ -11,7 +11,7 @@ CPP_SRCS += \
 ../Sensor.cpp \
 ../SensorLeaf.cpp \
 ../SensorRoot.cpp \
-../TestAlexandre.cpp 
+../TestsUnitaires.cpp 
 
 OBJS += \
 ./Begin.o \
@@ -21,7 +21,7 @@ OBJS += \
 ./Sensor.o \
 ./SensorLeaf.o \
 ./SensorRoot.o \
-./TestAlexandre.o 
+./TestsUnitaires.o 
 
 CPP_DEPS += \
 ./Begin.d \
@@ -31,7 +31,7 @@ CPP_DEPS += \
 ./Sensor.d \
 ./SensorLeaf.d \
 ./SensorRoot.d \
-./TestAlexandre.d 
+./TestsUnitaires.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

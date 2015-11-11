@@ -99,6 +99,9 @@ SensorLeaf::SensorLeaf(int * numberLeaves, SensorLeaf ** aParent,
 	*nbLeaves = 0;
 	*nextParent = this;
 	*lastElement = this;
+#ifdef MAP
+		cout << "Using default constructor from SensorLeaf. This corresponds to the root of the tree." << endl;
+#endif
 }
 
 SensorLeaf::SensorLeaf (Sensor * const aSensor, SensorLeaf * aLeft, SensorLeaf * aParent)

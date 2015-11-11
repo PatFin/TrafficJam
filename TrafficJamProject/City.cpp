@@ -137,6 +137,7 @@ void City::JamPerHour(int weekDay)
 
 	delete[] stats;
 	delete[] trafficRN;
+	delete[] sensors;
 }
 
 void City::JamStatsPerWeekDay(int weekDay)
@@ -189,6 +190,7 @@ void City::JamStatsPerWeekDay(int weekDay)
 		cout << "R 0%" << endl;
 		cout << "N 0%" << endl;
 	}
+	delete [] sensors;
 }
 
 //--------------------------------------------------------Surcharge d'opérateurs

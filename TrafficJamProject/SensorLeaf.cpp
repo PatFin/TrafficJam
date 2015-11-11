@@ -100,7 +100,7 @@ SensorLeaf::SensorLeaf(int * numberLeaves, SensorLeaf ** aParent,
 	*nextParent = this;
 	*lastElement = this;
 #ifdef MAP
-		cout << "Using default constructor from SensorLeaf. This corresponds to the root of the tree." << endl;
+		cout << "--Using constructor of <SensorLeaf>. Root of the tree created." << endl;
 #endif
 }
 
@@ -248,6 +248,7 @@ void SensorLeaf::sortTree()
 
 
 	refillTree(sensor, this);
+	delete [] sensor;
 }
 
 Sensor ** SensorLeaf::refillTree(Sensor ** sensorTable, SensorLeaf* leaf)

@@ -62,7 +62,6 @@ bool Event::HasNext()
 	}
 }
 
-
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -89,7 +88,7 @@ Event::Event ()
     day = 0;
     trafficState = 'V';
 
-    next = NULL;
+    next = this;
 } //----- Fin de Event
 
 Event::Event (unsigned int aYear, unsigned int aMonth, unsigned int aDay,

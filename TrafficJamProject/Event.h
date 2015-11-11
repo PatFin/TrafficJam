@@ -58,6 +58,7 @@ public:
     //
     // Contract:
     //	No contract.
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 
@@ -129,7 +130,7 @@ inline std::ostream& operator << ( std::ostream &strm, const Event & aEvent )
 // Algorithme :
 //
 {
-	return strm << aEvent.day << "/" << aEvent.month << "/" << aEvent.year
+	return strm << aEvent.year << "/" << aEvent.month << "/" << aEvent.day
 				<< " : " << aEvent.trafficState;
 } //----- Fin de operator <<
 

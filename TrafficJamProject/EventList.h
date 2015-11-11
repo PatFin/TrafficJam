@@ -139,12 +139,14 @@ inline std::ostream& operator << (std::ostream &strm, const EventList & aEventLi
 {
 	Event* cursor = aEventList.root;
 
-	while (cursor != NULL)
+	while (cursor->HasNext())
 	{
-		if (cursor != aEventList.root)
-		{
-			strm << *cursor << endl;
-		}
+//		if (cursor != aEventList.root)
+//		{
+//			strm << *cursor << endl;
+//		}
+
+		strm << *cursor->GetNext() << endl;
 
 		cursor = cursor->GetNext();
 	}

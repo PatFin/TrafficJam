@@ -197,7 +197,7 @@ Sensor::Sensor ()
 	#endif
 
     id = 0;
-    trafficNumbers = new unsigned long int[4];
+    //trafficNumbers = new unsigned long int[4];
 
     int i, j, k;
 
@@ -229,7 +229,7 @@ Sensor::Sensor (long int aId)
 	#endif
 
     id = aId;
-    trafficNumbers = new unsigned long int[4];
+    //trafficNumbers = new unsigned long int[4];
 
     int i, j, k;
 
@@ -274,7 +274,7 @@ Sensor::~Sensor ( )
     	}
     }
 
-    delete[] trafficNumbers;
+    //delete[] trafficNumbers;
 } //----- Fin de ~Sensor
 
 

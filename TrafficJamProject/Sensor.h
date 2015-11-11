@@ -133,7 +133,7 @@ private:
 
     EventList* events[7][24][60];
 
-    unsigned long int* trafficNumbers;
+    unsigned long int trafficNumbers[4];
     unsigned long int nbOfEvents;
 
 //---------------------------------------------------------- Classes amies

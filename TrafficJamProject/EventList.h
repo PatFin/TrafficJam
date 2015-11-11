@@ -110,7 +110,7 @@ private:
 
     Event* root;
     unsigned long int nbEvents;
-    unsigned long int* trafficNumbers;
+    unsigned long int trafficNumbers[4];
 
 //---------------------------------------------------------- Classes amies
 

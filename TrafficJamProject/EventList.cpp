@@ -152,7 +152,7 @@ EventList::EventList ()
 #endif
 
     root = new Event();
-    trafficNumbers = new unsigned long int[4];
+    //trafficNumbers = new unsigned long int[4];
 
     int i;
 
@@ -174,7 +174,7 @@ EventList::~EventList ( )
 #endif
 
     delete root;
-    delete[] trafficNumbers;
+    //delete[] trafficNumbers;
 } //----- Fin de ~EventList
 
 

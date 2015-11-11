@@ -1,8 +1,9 @@
 *.o
 *.d
 *.mk
-Debug
+Debug/*
+Release/*
 Test.cpp
 /TestPatrick.cpp
-/TestsUnitaire/
+/TestsUnitaire/*
 /Release/

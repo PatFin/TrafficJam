@@ -10,8 +10,7 @@ CPP_SRCS += \
 ../EventList.cpp \
 ../Sensor.cpp \
 ../SensorLeaf.cpp \
-../SensorRoot.cpp \
-../TestsUnitaires.cpp 
+../SensorRoot.cpp 
 
 OBJS += \
 ./Begin.o \
@@ -20,8 +19,7 @@ OBJS += \
 ./EventList.o \
 ./Sensor.o \
 ./SensorLeaf.o \
-./SensorRoot.o \
-./TestsUnitaires.o 
+./SensorRoot.o 
 
 CPP_DEPS += \
 ./Begin.d \
@@ -30,15 +28,14 @@ CPP_DEPS += \
 ./EventList.d \
 ./Sensor.d \
 ./SensorLeaf.d \
-./SensorRoot.d \
-./TestsUnitaires.d 
+./SensorRoot.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
 %.o: ../%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
-	g++ -DMAP -I/usr/include -I/usr/include/c++/4.9.2 -I/usr/include/c++/4.9 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
+	g++ -I/usr/include -I/usr/include/c++/4.9.2 -I/usr/include/c++/4.9 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

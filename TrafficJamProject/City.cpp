@@ -106,7 +106,7 @@ void City::JamStatsPerWeekDay(int weekDay)
 #ifdef MAP
 	for (i = 0; i < nbSensors; i++)
 	{
-		cout << *(sensors[i]) << endl;
+		cout << "--" <<*(sensors[i]) << endl;
 	}
 #endif
 
@@ -149,7 +149,7 @@ void City::JamStatsPerWeekDay(int weekDay)
 City::City()
 {
 #ifdef MAP
-	cout << "Constructor from City" << endl;
+	cout << "--Constructor from <City>" << endl;
 #endif
 	sensorTree = new SensorRoot();
 }
@@ -157,7 +157,7 @@ City::City()
 City::~City ()
 {
 #ifdef MAP
-	cout << "Destructor from City" << endl;
+	cout << "--Destruction of <City>" << endl;
 #endif
 	delete(sensorTree);
 }

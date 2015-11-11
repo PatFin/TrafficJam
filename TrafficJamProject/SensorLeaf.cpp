@@ -133,8 +133,8 @@ SensorLeaf::SensorLeaf (Sensor * const aSensor, SensorLeaf * aLeft, SensorLeaf *
 	nbLeaves = parent->nbLeaves;
 	*nbLeaves = *nbLeaves +1;
 #ifdef MAP
-	cout << "Using constructor 2 of <SensorLeaf>" << endl;
-	cout << "*There are now " << *nbLeaves << " leaves in the tree" << endl;
+	cout << "--Construction of <SensorLeaf> NUMBER 2" << endl;
+	cout << "--There are now " << *nbLeaves << " leaves in the tree" << endl;
 #endif
 }
 
@@ -142,7 +142,7 @@ SensorLeaf::~SensorLeaf()
 {
 
 #ifdef MAP
-	cout << "Destructor from SensorLeaf" << endl;
+	cout << "--Destruction of <SensorLeaf>" << endl;
 #endif
 	if (hasLeftChild())
 	{
